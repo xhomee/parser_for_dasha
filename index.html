@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ÐÐ¿ÑÐµÑÐ½Ð¸Ð¹ ÑÐ°Ð¼ÑÑ</title>
+    <meta name="description" content="">
+    <!--    <link rel="icon" href="img/favicon/favicon.ico">-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!--    <link rel="stylesheet" href="../fonts/stylesheet.css">-->
+    <!--    <link rel="stylesheet" href="../css/comp-cont.css">-->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/style-timer.css">
+
+
+    <link rel="stylesheet" href="../../webinars/dist/webconf.css">
+    <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+    <script src="../../webinars/dist/webconf.umd.min.js"></script>
+
+    <style>
+        .request-form button.register.btn.btn-outline-success.mx-2 {
+            display: none !important;
+        }
+
+        .col-sm.participant h6 {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-top: 10px;
+        }
+
+        /*--------------------------------*/
+        @media (max-width: 575.98px) {
+            .form-control {
+                width: 100%;
+            !important;
+            }
+        }
+
+        /*#request-form .row {*/
+        /*    flex-direction: column !important;*/
+        /*}*/
+
+        /*.modal-body .row {*/
+        /*    flex-direction: column;*/
+        /*}*/
+        .modal-content {
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .modal-body .row {
+            display: block;
+        !important;
+        }
+
+        /*#request-form .col-sm.company .form-group.country,*/
+        /*#request-form .col-sm.company .form-group.name,*/
+        /*#request-form .col-sm.company .form-group.position,*/
+        /*#request-form .col-sm.company .form-group.address,*/
+        /*#request-form .col-sm.company .form-group.contact,*/
+        /*#request-form .col-sm.company .form-group.phone,*/
+        #request-form .col-sm.company .form-group.name,
+        #request-form .col-sm.company .form-group.total {
+            display: none;
+        }
+
+        #request-form .btn-outline-success.mx-2 {
+            color: #1E1E1E;;
+            border-color: #FFF500;
+            background-color: #FFF500;
+            border-radius: 40px;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 160%;
+            padding: 20px 40px;
+        }
+
+        .btn-outline-success.mx-2:hover {
+            background-color: #FFF500;
+            outline: none;
+            border-color: #FFF500;
+            color: #016BAF;
+        }
+
+        .form-control[required] {
+            border-color: #ced4da;
+            border-width: 2px;
+        }
+
+        .border-danger {
+            border-color: #ced4da !important;
+        }
+
+        .btn.btn-outline-danger.float-right:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-outline-success:hover {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .modal.show .modal-dialog.modal-xl .modal-content .modal-body #request-form .col-12.text-danger {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 160%;
+            color: #FFDA3E !important;
+        }
+
+        .modal.show .modal-dialog.modal-xl .modal-content .modal-body #request-form .col-12.text-danger:after {
+            content: "*";
+            margin-left: 5px;
+        }
+
+        .modal.show .modal-dialog.modal-xl .modal-content .modal-body #request-form .col-sm.participant {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 160%;
+            color: #FFFFFF !important;
+        }
+
+        .modal.show .modal-dialog.modal-xl .modal-content .modal-body #request-form .my-3.border-bottom.border-danger .text-danger {
+            /*font-style: normal;*/
+            /*font-weight: 500;*/
+            /*font-size: 16px;*/
+            /*line-height: 160%;*/
+            /*color: #FFDA3E !important;*/
+            display: none;
+        }
+
+        .btn.btn-outline-secondary {
+            border: 2px solid #FFFFFF;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 160%;
+            color: #FFFFFF;
+        }
+
+        @media screen and (min-width: 320px) and (max-width: 600px) {
+
+            .modal.show .modal-dialog.modal-xl .modal-content {
+                padding: 10px !important;
+            }
+
+            .modal-footer {
+                padding: 0;
+            }
+
+            .modal.show .modal-content .modal-footer > .btn-outline-success,
+            .modal.show .modal-content .modal-footer > .btn-outline-secondary {
+                padding: 5px 40px;
+            }
+        }
+
+        .btn-outline-success:hover,
+        .text-danger .btn-outline-danger.float-right:hover {
+            background: #FFDA3E;
+        !important;
+            color: #016BAF;
+            border-color: #FFDA3E;
+        !important;
+        }
+
+        .btn-outline-secondary:hover {
+            background: transparent;
+            color: white;
+        }
+
+        #request-form label {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 160%;
+            color: #FFFFFF;
+        }
+
+        .col-sm.company h6 {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 160%;
+            color: #FFFFFF;
+        }
+
+        .modal-title {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 160%;
+            color: #FFFFFF;
+        }
+
+        .modal-content {
+            border-radius: 32px;
+            /*padding: 35px 35px;*/
+            padding: 10px 35px;
+            background: white linear-gradient(179.95deg, #016BAF -23.58%, rgba(16, 143, 207, 0.29) 164.92%);
+        }
+
+        .close {
+            color: rgba(255, 218, 62, 1);
+            opacity: 1;
+            border: none;
+            background-color: transparent;
+        }
+
+        .close:focus,
+        .close:focus-visible {
+            outline: none;
+        }
+
+        .btn-outline-danger,
+        .btn-outline-success {
+            color: #016BAF;
+            border-color: #FFDA3E;
+            background-color: #FFDA3E;
+        }
+
+        .btn-outline-success {
+            padding: 10px 60px;
+        }
+
+        .form-group input {
+            /*height: 48px;*/
+            border-radius: 6px;
+        }
+
+        .form-group label:after {
+            content: "*";
+            color: #FFDA3E;
+            margin-left: 5px;
+        }
+
+        .form-group.promo label:after {
+            content: "";
+        !important;
+        }
+
+        .form-group.tax label:after {
+            content: "";
+        !important;
+        }
+
+        .request-form .dialog-box.success .modal-dialog.modal-md .modal-content.modal-body div {
+            color: #FFFFFF;
+        !important;
+        }
+
+        .form-group.lang .form-control option:nth-of-type(2) {
+            display: none;
+        }
+
+
+        .stream-name.form-check.form-check-inline .form-check-label.mr-3 {
+            color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <a class="logo-main" href="">
+                    <img src="img/Logo.png" alt="ÐÐ¿ÑÐµÑÐ½Ð¸Ð¹ ÑÐ°Ð¼ÑÑ"/>
+                </a>
+            </div>
+
+            <div class="header-menu col-xl-7 col-8 offset-2 offset-xl-3 d-flex justify-content-end align-items-center">
+                <a class="header-list" href="#about-summit">ÐÑÐ¾ ÑÐ°Ð¼ÑÑ</a>
+                <a class="header-list" href="#program">ÐÑÐ¾Ð³ÑÐ°Ð¼Ð°</a>
+                <a class="header-list" href="#price">Ð¦ÑÐ½Ð°</a>
+                <a class="header-list" href="#summit-2021">Ð¡Ð°Ð¼ÑÑ 2021</a>
+                <a class="header-list" href="#contact">ÐÐ¾Ð½ÑÐ°ÐºÑÐ¸ ÑÐ° Ð¼ÑÑÑÐµ</a>
+            </div>
+
+            <!--only mobile-->
+            <div class="burger-menu">
+                <ul class="menu">
+                    <li><a href="#about-summit" class="menuItem">ÐÑÐ¾ ÑÐ°Ð¼ÑÑ</a></li>
+                    <li><a href="#program" class="menuItem">ÐÑÐ¾Ð³ÑÐ°Ð¼Ð°</a></li>
+                    <li><a href="#price" class="menuItem">Ð¦ÑÐ½Ð°</a></li>
+                    <li><a href="#summit-2021" class="menuItem">Ð¡Ð°Ð¼ÑÑ 2021</a></li>
+                    <li><a href="#contact" class="menuItem">ÐÐ¾Ð½ÑÐ°ÐºÑÐ¸ ÑÐ° Ð¼ÑÑÑÐµ</a></li>
+                </ul>
+                <button class="hamburger" onclick="myFunction(this)">
+                            <span class="bars">
+                                <span class="bar1"></span>
+                                <span class="bar2"></span>
+                                <span class="bar3"></span>
+                            </span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="bg-main main-card">
+    <div class="container padding-main">
+        <div class="row">
+            <div class="container-left col-12 col-md-6">
+                <div class="d-flex justify-content-between">
+                    <div class="title-text-1">12-Ð¹</div>
+                    <div class="title-bg-2">
+                        <div class="title-text-2">ÐÐ°ÑÑÐ´ Ð² <br>ÑÐºÑÐ¸ÑÑÑ</div>
+                    </div>
+                </div>
+                <div class="title-text-3">Ð°Ð¿ÑÐµÑÐ½Ð¸Ð¹ ÑÐ°Ð¼ÑÑ</div>
+                <div class="d-flex">
+                    <div class="title-text-4">Ð£ÐºÑÐ°ÑÐ½Ð¸</div>
+                    <div class="title-text-5">2022</div>
+                </div>
+                <div>
+                    <div>
+                        <div class="bg-place">
+                            <div class="title-text-6">
+                                <img src="img/location.svg" alt=""/>Ð¼. ÐÐ¸ÑÐ², Ð²ÑÐ».Ð.ÐÐ¸ÑÐ¾Ð¼Ð¸ÑÑÑÐºÐ° 2Ð
+                            </div>
+                            <div class="title-text-7">Ð³Ð¾ÑÐµÐ»Ñ InterContinental 5*, - 2 Ð¿Ð¾Ð²ÐµÑÑ</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="bg-place mt-1">
+                            <div class="title-text-8"><img src="img/calendar.svg" alt=""/> 6 Ð³ÑÑÐ´Ð½Ñ 2022</div>
+                        </div>
+                    </div>
+                </div>
+                <!--                <div>-->
+                <!--                    <button class="register-btn header-btn" onclick="allClick()">-->
+                <!--                        <img src="img/register.svg" alt=""/> Ð ÐµÑÑÑÑÐ°ÑÑÑ-->
+                <!--                    </button>-->
+                <!--                </div>-->
+            </div>
+            <div class="container-right col-12 col-md-6">
+                <div class="container-map">
+                    <img class="map-main1" src="img/map-main.svg" alt="">
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2 col-xl-7 offset-xl-3 col-xxl-6 offset-xxl-3 d-flex justify-content-end">
+                        <div class="timer">
+                            <div class="timer-heading">ÐÐ¾ Ð¿Ð¾ÑÐ°ÑÐºÑ Ð·Ð°Ð»Ð¸ÑÐ¸Ð»Ð¾ÑÑ:</div>
+                            <div class="container-timer">
+                                <div class="timer__items">
+                                    <div class="timer__item timer__days">00</div>
+                                    <div class="timer__item timer__hours">00</div>
+                                    <div class="timer__item timer__minutes">00</div>
+                                    <div class="timer__item timer__seconds">00</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- APP REGISTRATION -->
+<div id="app" class="container-fluid" style="margin-bottom: 50px;">
+    <webconf date="2021-12-06 9:30:00" event="943ed68b-154b-41f3-a5ed-c38b3e7b1658" :noreg="false">
+    </webconf>
+</div>
+
+<section class="about-summit about-summit-container" id="about-summit">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-xl-5 col-lg-6 offset-lg-0 col-md-10 offset-md-1">
+                <div class="about-summit-desc-container">
+                    <h2>ÐÑÐ¾ ÑÐ°Ð¼ÑÑ</h2>
+                    <p class="about-summit-desc">ÐÐ¾Ð»Ð¾Ð²Ð½Ð° Ð¿Ð¾Ð´ÑÑ ÑÐ¾ÐºÑ Ð´Ð»Ñ Ð°Ð¿ÑÐµÑÐ½Ð¾Ð³Ð¾ ÑÐ¸Ð½ÐºÑ Â«ÐÐ¿ÑÐµÑÐ½Ð¸Ð¹ ÑÐ°Ð¼ÑÑ Ð£ÐºÑÐ°ÑÐ½Ð¸Â» - ÑÐµ
+                        ÑÐµÐ³ÑÐ»ÑÑÐ½Ð¸Ð¹ <b>Ð·'ÑÐ·Ð´ Ð¿ÑÐ¾ÑÐµÑÑÐ¾Ð½Ð°Ð»ÑÐ²</b>
+                        ÑÐ°ÑÐ¼Ð°ÑÐµÐ²ÑÐ¸ÑÐ½Ð¾Ð³Ð¾ ÑÐ¸Ð½ÐºÑ Ð· ÑÐµÑÐµÐ»ÑÐ½Ð¾ Ð¿ÑÐ¾Ð´ÑÐ¼Ð°Ð½Ð¸Ð¼ ÑÐºÐ»Ð°Ð´Ð¾Ð¼ Ð´Ð¾Ð¿Ð¾Ð²ÑÐ´Ð°ÑÑÐ² Ñ Ð²ÑÐ´Ð¼ÑÐ½Ð½Ð¸Ð¼Ð¸ Ð¼Ð¾Ð¶Ð»Ð¸Ð²Ð¾ÑÑÑÐ¼Ð¸ Ð´Ð»Ñ
+                        Ð´ÑÐ»Ð¾Ð²Ð¸Ñ ÐºÐ¾Ð¼ÑÐ½ÑÐºÐ°ÑÑÐ¹. Ð Ð¸Ð½ÐºÐ¾Ð²Ð° ÑÐ¸ÑÑÐ°ÑÑÑ Ñ ÑÐ¼Ð¾Ð²Ð¸ ÑÐ¾Ð±Ð¾ÑÐ¸ Ð³Ð°Ð»ÑÐ·Ñ Ð·Ð¼ÑÐ½ÑÑÑÑÑÑ Ð¿Ð¾ÑÑÑÐ¹Ð½Ð¾, Ð° ÑÑÐ¾Ð³Ð¾Ð´Ð½Ñ ÑÑ
+                        Ð·Ð¼ÑÐ½Ð¸
+                        Ñ Ð½ÐµÐ¿ÐµÑÐµÐ´Ð±Ð°ÑÑÐ²Ð°Ð½Ð¸Ð¼Ð¸, ÑÐ¾Ð¼Ñ Ð´ÑÐ¶Ðµ Ð²Ð°Ð¶Ð»Ð¸Ð²Ð¾ Ð±ÑÑÐ¸ Ð² ÐºÑÑÑÑ ÑÐ¾Ð³Ð¾, <b>ÑÐ¾ ÑÐµÐºÐ°Ñ Ð°Ð¿ÑÐµÑÐ½Ð¸Ð¹ Ð±ÑÐ·Ð½ÐµÑ
+                            ÑÑÐ¾Ð³Ð¾Ð´Ð½Ñ</b> ÑÐ° Ð¿ÑÑÐ»Ñ
+                        Ð½Ð°ÑÐ¾Ñ ÐÐµÑÐµÐ¼Ð¾Ð³Ð¸. Ð¡Ð°Ð¼ÑÑ Ð´Ð°Ñ Ð³Ð°ÑÐ½Ñ Ð¼Ð¾Ð¶Ð»Ð¸Ð²ÑÑÑÑ <b>Ð¾Ð·Ð½Ð°Ð¹Ð¾Ð¼Ð¸ÑÐ¸ÑÑ Ð· Ð´Ð¾ÑÐ²ÑÐ´Ð¾Ð¼</b>, ÑÐº Ð²ÐµÑÑÐ¸ Ð±ÑÐ·Ð½ÐµÑ Ð¿ÑÐ´
+                        ÑÐ°Ñ Ð²ÑÐ¹Ð½Ð¸,
+                        Ð¾Ð±Ð³Ð¾Ð²Ð¾ÑÐ¸ÑÐ¸ ÑÐ¼Ð¾Ð²Ð¸ Ð´Ð¸ÑÑÑÐ¸Ð±ÑÑÑÑ Ñ ÑÐ¾Ð·Ð´ÑÐ¾Ð±Ñ, Ð¾Ð±Ð¼ÑÐ½ÑÑÐ¸ÑÑ ÑÐ½ÑÐ°Ð¹Ð´Ð¾Ð¼ ÑÐ¾Ð´Ð¾ ÑÐ¸Ð½ÐºÐ¾Ð²Ð¾Ñ ÑÐ¸ÑÑÐ°ÑÑÑ Ñ Ð²Ð¸ÑÐ¾Ð±Ð¸ÑÐ¸
+                        ÑÑÑÐ°ÑÐµÐ³ÑÑ ÑÐ¾Ð·Ð²Ð¸ÑÐºÑ ÑÐ°ÑÐ¼Ð°ÑÑÑ Ð½Ð° Ð½Ð°Ð¹Ð±Ð»Ð¸Ð¶ÑÐµ Ð¼Ð°Ð¹Ð±ÑÑÐ½Ñ.</p>
+                </div>
+            </div>
+            <div class="col-12 col-xl-6 offset-xl-1 col-lg-6 offset-lg-0 col-md-8 offset-md-2">
+                <img class="about-summit-img" src="img/aout-summit.jpg" alt=""/>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="program" id="program">
+    <div class="program-abs-1">
+        <div class="program-abs-2">
+            <div class="program-abs-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="program-container">
+                                <h2>ÐÑÐ¾Ð³ÑÐ°Ð¼Ð° ÑÐ°Ð¼ÑÑÑ</h2>
+                                <div class="program-item">
+                                    <div class="program-time">9:00 - 9:30</div>
+                                    <div class="program-num">1</div>
+                                    <div>
+                                        <div class="program-time2">9:00 - 9:30</div>
+                                        <div class="program-desc">Ð ÐÐÐ¡Ð¢Ð ÐÐ¦ÐÐ¯/ÐÐÐÐ-ÐÐÐ£ÐÐ</div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">9:50 - 10:05</div>
+                                    <div class="program-num">2</div>
+                                    <div>
+                                        <div class="program-time2">9:50 - 10:05</div>
+                                        <div class="program-desc">ÐÐ¿ÑÐµÑÐ½Ð¸Ð¹ ÑÐ°Ð¼ÑÑ Ð£ÐºÑÐ°ÑÐ½Ð¸. ÐÐ¾ÑÐ¾ÑÐ½Ð° ÑÐ¸ÑÑÐ°ÑÑÑ</div>
+                                        <div class="program-speaker"><b>ÐÐ³Ð¾Ñ Ð§ÐµÑÐ²Ð¾Ð½ÐµÐ½ÐºÐ¾</b>, Ð³Ð¾Ð»Ð¾Ð²Ð° Ð¿ÑÐ°Ð²Ð»ÑÐ½Ð½Ñ
+                                            Ð³ÑÐ¾Ð¼Ð°Ð´ÑÑÐºÐ¾Ñ
+                                            ÑÐ¿ÑÐ»ÐºÐ¸
+                                            Â«ÐÐ¿ÑÐµÑÐ½Ð° Ð¿ÑÐ¾ÑÐµÑÑÐ¹Ð½Ð° Ð°ÑÐ¾ÑÑÐ°ÑÑÑ Ð£ÐºÑÐ°ÑÐ½Ð¸Â» (ÐÐÐÐ£)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time" style="color: transparent">9:30 - 9:50</div>
+                                    <div class="program-num"><img src="img/mic.svg" alt=""/></div>
+                                    <div>
+                                        <div class="program-topic">ÐÐµÑÐ¶Ð°Ð²Ð° ÑÐ° Ð±ÑÐ·Ð½ÐµÑ. Ð¢ÑÐ°Ð½ÑÑÐ¾ÑÐ¼Ð°ÑÑÑ Ð²Ð·Ð°ÑÐ¼Ð¾Ð²ÑÐ´Ð½Ð¾ÑÐ¸Ð½
+                                        </div>
+                                        <div class="program-speaker">ÐÐ¾Ð´ÐµÑÐ°ÑÐ¾ÑÐ¸:</div>
+                                        <div class="program-speaker"><b>ÐÑÑÑÑ Ð Ð¾ÑÐ°Ñ</b>, BU Head Proxima Research
+                                            International
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ¾Ð»Ð¾Ð´Ð¸Ð¼Ð¸Ñ ÐÐ³Ð½Ð°ÑÐ¾Ð² </b>, ÐÐ¸ÐºÐ¾Ð½Ð°Ð²ÑÐ¸Ð¹ Ð´Ð¸ÑÐµÐºÑÐ¾Ñ AIPM
+                                            Ukraine
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">10:05 - 10:45</div>
+                                    <div class="program-num">3</div>
+                                    <div>
+                                        <div class="program-time2">10:05 - 10:45</div>
+                                        <div class="program-desc">ÐÐ¾Ð²Ñ Ð·Ð°ÐºÐ¾Ð½Ð¾Ð´Ð°Ð²ÑÑ Ð·Ð¼ÑÐ½Ð¸ Ñ ÑÐ°ÑÐ¼Ð°ÑÐµÐ²ÑÐ¸ÑÐ½ÑÐ¹ Ð³Ð°Ð»ÑÐ·Ñ.
+                                            Ð¡ÑÐ²Ð¾ÑÐµÐ½Ð½Ñ
+                                            Ð½Ð¾Ð²Ð¾Ð³Ð¾
+                                            ÑÐµÐ³ÑÐ»ÑÑÐ¾ÑÐ½Ð¾Ð³Ð¾ Ð¾ÑÐ³Ð°Ð½Ñ, Ð»ÑÑÐµÐ½Ð·ÑÐ¹Ð½Ñ ÑÐ¼Ð¾Ð²Ð¸, Ð°ÐºÑÑÐ°Ð»ÑÐ½Ñ Ð¿Ð¸ÑÐ°Ð½Ð½Ñ Ð´ÑÑÐ»ÑÐ½Ð¾ÑÑÑ
+                                            Ð°Ð¿ÑÐµÐº
+                                        </div>
+                                        <div class="program-speaker"><b>Ð¡ÐµÑÐµÐ´ Ð·Ð°Ð¿ÑÐ¾ÑÐµÐ½Ð¸Ñ:</b></div>
+                                        <div class="program-speaker"><b>ÐÐ»ÐµÐºÑÐ°Ð½Ð´Ñ ÐÐ¾Ð¼Ð°ÑÑÐ´Ð°</b>, ÐÐµÑÑÐ¸Ð¹ Ð·Ð°ÑÑÑÐ¿Ð½Ð¸Ðº
+                                            ÐÑÐ½ÑÑÑÑÐ° ÐÑÐ¾ÑÐ¾Ð½Ð¸ ÐÐ´Ð¾ÑÐ¾Ð²'Ñ
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐµÐ½Ð¸Ñ ÐÑÐ´ÑÐ½</b>, ÐÐµÑÑÐ¸Ð¹ Ð·Ð°ÑÑÑÐ¿Ð½Ð¸Ðº ÐÑÐ½ÑÑÑÑÐ°
+                                            ÐÐºÐ¾Ð½Ð¾Ð¼ÑÐºÐ¸ Ð£ÐºÑÐ°ÑÐ½Ð¸
+                                        </div>
+                                        <div class="program-speaker"><b>Ð¡ÐµÑÐ³ÑÐ¹ ÐÑÐ·ÑÐ¼ÑÐ½Ð¸Ñ</b>, ÐÐ°ÑÐ¾Ð´Ð½Ð¸Ð¹ ÐÐµÐ¿ÑÑÐ°Ñ
+                                            Ð£ÐºÑÐ°ÑÐ½Ð¸,
+                                            ÐÐ¾Ð»Ð¾Ð²Ð° Ð¿ÑÐ´ÐºÐ¾Ð¼ÑÑÐµÑÑ Ð· Ð¿Ð¸ÑÐ°Ð½Ñ ÑÐ°ÑÐ¼Ð°ÑÑÑ ÑÐ° ÑÐ°ÑÐ¼Ð°ÑÐµÐ²ÑÐ¸ÑÐ½Ð¾Ñ Ð´ÑÑÐ»ÑÐ½Ð¾ÑÑÑ
+                                            ÐÐ¾Ð¼ÑÑÐµÑÑ
+                                            ÐÐµÑÑÐ¾Ð²Ð½Ð¾Ñ Ð Ð°Ð´Ð¸ Ð£ÐºÑÐ°ÑÐ½Ð¸ Ð· Ð¿Ð¸ÑÐ°Ð½Ñ Ð·Ð´Ð¾ÑÐ¾Ð²âÑ Ð½Ð°ÑÑÑ, Ð¼ÐµÐ´Ð¸ÑÐ½Ð¾Ñ Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð³Ð¸ ÑÐ°
+                                            Ð¼ÐµÐ´Ð¸ÑÐ½Ð¾Ð³Ð¾ ÑÑÑÐ°ÑÑÐ²Ð°Ð½Ð½Ñ
+                                        </div>
+                                        <div class="program-speaker"><b>Ð®ÑÑÐ¹ ÐÐ°ÑÐ»Ð°Ð²ÑÑÐºÐ¸Ð¹</b>, ÐÐ°ÑÐ¾Ð´Ð½Ð¸Ð¹ ÐÐµÐ¿ÑÑÐ°Ñ
+                                            Ð£ÐºÑÐ°ÑÐ½Ð¸
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ°Ð»ÐµÑÑÐ¹ ÐÑÐ±</b>, ÐÐ°ÑÐ¾Ð´Ð½Ð¸Ð¹ Ð´ÐµÐ¿ÑÑÐ°Ñ Ð£ÐºÑÐ°ÑÐ½Ð¸
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐºÑÐ°Ð½Ð° ÐÐ¼ÑÑÑÑÑÐ²Ð°</b>, ÐÐ°ÑÐ¾Ð´Ð½Ð¸Ð¹ Ð´ÐµÐ¿ÑÑÐ°Ñ
+                                            Ð£ÐºÑÐ°ÑÐ½Ð¸,
+                                            Ð·Ð°ÑÑÑÐ¿Ð½Ð¸Ðº Ð³Ð¾Ð»Ð¾Ð²Ð¸ ÐÐ¾Ð¼ÑÑÐµÑÑ ÐÐµÑÑÐ¾Ð²Ð½Ð¾Ñ Ð Ð°Ð´Ð¸ Ð£ÐºÑÐ°ÑÐ½Ð¸ Ð· Ð¿Ð¸ÑÐ°Ð½Ñ Ð·Ð´Ð¾ÑÐ¾Ð²'Ñ
+                                            Ð½Ð°ÑÑÑ,
+                                            Ð¼ÐµÐ´Ð¸ÑÐ½Ð¾Ñ Ð´Ð¾Ð¿Ð¾Ð¼Ð¾Ð³Ð¸ ÑÐ° Ð¼ÐµÐ´Ð¸ÑÐ½Ð¾Ð³Ð¾ ÑÑÑÐ°ÑÑÐ²Ð°Ð½Ð½Ñ
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ»ÐµÐºÑÑÐ¹ Ð¡Ð¾Ð»Ð¾Ð²Ð¹Ð¾Ð²</b>, ÐÐ°ÑÑÑÐ¿Ð½Ð¸Ðº Ð¡ÐµÐºÑÐµÑÐ°ÑÑ
+                                            Ð Ð°Ð´Ð¸
+                                            Ð½Ð°ÑÑÐ¾Ð½Ð°Ð»ÑÐ½Ð¾Ñ Ð±ÐµÐ·Ð¿ÐµÐºÐ¸ Ñ Ð¾Ð±Ð¾ÑÐ¾Ð½Ð¸ Ð£ÐºÑÐ°ÑÐ½Ð¸
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">10:45 - 11:05</div>
+                                    <div class="program-num">4</div>
+                                    <div>
+                                        <div class="program-time2">10:45 - 11:05</div>
+                                        <div class="program-desc">ÐÐ³Ð»ÑÐ´ Ð·Ð°ÐºÐ¾Ð½Ð¾Ð´Ð°Ð²ÑÐ¸Ñ Ð½Ð¾Ð²Ð¸Ð½. ÐÐ¾Ð²Ñ Ð½Ð¾ÑÐ¼Ð°ÑÐ¸Ð²Ð½Ñ Ð°ÐºÑÐ¸ Ð²
+                                            ÐºÑÐ°ÑÐ½Ñ
+                                            Ð¿ÑÐ´
+                                            ÑÐ°Ñ
+                                            Ð²Ð¾ÑÐ½Ð½Ð¾Ð³Ð¾ ÑÑÐ°Ð½Ñ
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ¼Ð¸ÑÑÐ¾ ÐÐ»ÐµÑÐºÐ¾</b>, ÐÐ°ÑÑÐ½ÐµÑ Ð®Ð Â«ÐÑÐ°Ð²Ð¾Ð²Ð¸Ð¹
+                                            Ð°Ð»ÑÑÐ½ÑÂ»,
+                                            ÐÐ´Ð²Ð¾ÐºÐ°Ñ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">11:05 - 11:20</div>
+                                    <div class="program-num">5</div>
+                                    <div>
+                                        <div class="program-time2">11:05 - 11:20</div>
+                                        <div class="program-desc">Ð ÐµÐ¿Ð°ÑÐ°ÑÑÑ. ÐÐ° ÑÐ¾ ÑÐµÐºÐ°ÑÐ¸ Ð¿ÑÑÐ»Ñ ÐÐµÑÐµÐ¼Ð¾Ð³Ð¸?
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ¸ÐºÐ¾Ð»Ð° ÐÑÐ»Ð¾Ð²</b>, ÐÐµÑÑÑÑÐ¸Ð¹ Ð¿Ð°ÑÑÐ½ÐµÑ Ð®Ð "OMP",
+                                            ÐÐ´Ð²Ð¾ÐºÐ°Ñ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">11:20 - 11:30</div>
+                                    <div class="program-num">6</div>
+                                    <div>
+                                        <div class="program-time2">11:20 - 11:30</div>
+                                        <div class="program-desc">ÐÐ°ÑÐ°Ð´Ð¸ Ð¼Ð°Ð¹Ð±ÑÑÐ½ÑÐ¾Ð³Ð¾. ÐÐ°ÑÐ°Ð´Ð¸ Ð¶Ð¸ÑÑÑ.
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ¾Ð»Ð¾Ð´Ð¸Ð¼Ð¸Ñ ÐÐ¾ÑÐµÐ½ÐºÐ¾Ð²</b>, PR-Ð¼ÐµÐ½ÐµÐ´Ð¶ÐµÑ Ð³ÑÑÐ¿Ð¸
+                                            ÑÐ°ÑÐ¼Ð°ÑÐµÐ²ÑÐ¸ÑÐ½Ð¸Ñ ÐºÐ¾Ð¼Ð¿Ð°Ð½ÑÐ¹ "ÐÑÑÑÐ¼"
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">11:30 - 12:00</div>
+                                    <div class="program-num"><img src="img/mic.svg" alt=""/></div>
+                                    <div>
+                                        <div class="program-time2">11:30 - 12:00</div>
+                                        <div class="program-topic">ÐÐÐÐ-ÐÐÐ£ÐÐ</div> <br>
+                                        <div class="program-topic">E-Health. ÐÐµÐ²Ð¿Ð¸Ð½Ð½Ð¸Ð¹ ÑÐ¾Ð·Ð²Ð¸ÑÐ¾Ðº</div>
+                                        <div class="program-speaker">ÐÐ¾Ð´ÐµÑÐ°ÑÐ¾ÑÐ¸:</div>
+                                        <div class="program-speaker"><b>Ð¡ÐµÑÐ³ÑÐ¹ ÐÑÐ»Ð¸Ðº</b>, ÐÐºÑÐ¿ÐµÑÑ ÑÐ°ÑÐ¼Ð°ÑÐµÐ²ÑÐ¸ÑÐ½Ð¾Ð³Ð¾
+                                            ÑÐ¸Ð½ÐºÑ
+                                        </div>
+                                        <div class="program-speaker"><b>Ð®Ð»ÑÑ Ð¡Ð¿Ð°Ð»ÑÐ²ÑÑ</b>, ÐÐµÐ½ÐµÑÐ°Ð»ÑÐ½Ð¸Ð¹ Ð´Ð¸ÑÐµÐºÑÐ¾Ñ ÐºÐ¾Ð¼Ð¿Ð°Ð½ÑÑ
+                                            "ÐÑÐ·Ð½ÐµÑ Ð¦ÐµÐ½ÑÑ Ð¤Ð°ÑÐ¼Ð°ÑÑÑ",
+                                            Ð°Ð¿ÑÐµÑÐ½Ð° Ð¼ÐµÑÐµÐ¶Ð° "ÐÑÑÑÐµÑ-Ð¤Ð°ÑÐ¼"
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">12:00 - 12:15</div>
+                                    <div class="program-num">7</div>
+                                    <div>
+                                        <div class="program-time2">12:00 - 12:15</div>
+                                        <div class="program-desc">Ð ÑÐº 2022 Ð´Ð»Ñ ÐÐ°ÑÑÐ¾Ð½Ð°Ð»ÑÐ½Ð¾Ð³Ð¾ ÑÐ°ÑÐ¼Ð°ÑÐµÐ²ÑÐ¸ÑÐ½Ð¾Ð³Ð¾
+                                            ÑÐ½ÑÐ²ÐµÑÑÐ¸ÑÐµÑÑ. Ð¡ÑÐ°Ð»ÑÑÑÑ ÑÐ° ÑÑÑÐ±ÑÐ»ÐµÐ½ÑÐ½ÑÑÑÑ Ð² Ð¾ÑÐ²ÑÑÑ.
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ»Ð»Ð° ÐÐ¾ÑÐ²ÑÑÑÐºÐ°</b>, Ð ÐµÐºÑÐ¾Ñ ÐÐ°ÑÑÐ¾Ð½Ð°Ð»ÑÐ½Ð¾Ð³Ð¾
+                                            ÑÐ°ÑÐ¼Ð°ÑÐµÐ²ÑÐ¸ÑÐ½Ð¾Ð³Ð¾ ÑÐ½ÑÐ²ÐµÑÑÐ¸ÑÐµÑÑ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">12:15 - 12:35</div>
+                                    <div class="program-num">8</div>
+                                    <div>
+                                        <div class="program-time2">12:15 - 12:35</div>
+                                        <div class="program-desc">ÐÐ¿ÑÐ¾Ð²Ð°Ð´Ð¶ÐµÐ½Ð½Ñ Ðµ-ÑÐµÑÐµÐ¿ÑÐ°: Ð¿ÑÐ´ÑÑÐ¼ÐºÐ¸ Ð²ÑÐ´Ð¿ÑÑÐºÑ Ð°Ð½ÑÐ¸Ð±ÑÐ¾ÑÐ¸ÐºÑÐ²
+                                            ÑÐ° Ð½Ð°ÑÐºÐ¾ÑÐ¸ÑÐ½Ð¸Ñ (Ð¿ÑÐ¸ÑÐ¾ÑÑÐ¾Ð¿Ð½Ð¸Ñ) Ð»ÑÐºÑÐ² ÑÐ° Ð¿Ð»Ð°Ð½Ð¸ ÑÐ¾Ð´Ð¾ Ð²ÑÐ´Ð¿ÑÑÐºÑ Ð²ÑÑÑ
+                                            Rx-Ð¿ÑÐµÐ¿Ð°ÑÐ°ÑÑÐ². ÐÐµÑÑÐ¿ÐµÐºÑÐ¸Ð²Ð¸ ÑÐ° Ð½Ð¾Ð²Ñ Ð¼Ð¾Ð¶Ð»Ð¸Ð²Ð¾ÑÑÑ ÐÐ¡ÐÐ Ð´Ð»Ñ Ð°Ð¿ÑÐµÐº Ñ 2023 ÑÐ¾ÑÑ.
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÑÐ¸Ð½Ð° ÐÑÑÑÐ°Ð±Ð°</b>, ÐÐºÑÐ¿ÐµÑÑÐºÐ° Ð· ÑÐ°ÑÐ¼Ð°ÑÐµÐ²ÑÐ¸ÑÐ½Ð¸Ñ
+                                            Ð¿Ð¸ÑÐ°Ð½Ñ. ÐÐµÑÑÐ²Ð½Ð¸ÑÑ Ð³ÑÑÐ¿Ð¸ Ð±ÑÐ·Ð½ÐµÑ Ð°Ð½Ð°Ð»ÑÐ·Ñ Ð¿ÑÐ¾ÐµÐºÑÑ ÐÐ»ÐµÐºÑÑÐ¾Ð½Ð½Ð¸Ð¹ ÑÐµÑÐµÐ¿Ñ ÐÐ
+                                            Â«ÐÐ»ÐµÐºÑÑÐ¾Ð½Ð½Ðµ Ð·Ð´Ð¾ÑÐ¾Ð²Ê¼ÑÂ»
+                                        </div>
+                                    </div>
+                                </div>
+<!--                                <div class="program-item">-->
+<!--                                    <div class="program-time">12:35 - 12:50</div>-->
+<!--                                    <div class="program-num">7</div>-->
+<!--                                    <div>-->
+<!--                                        <div class="program-time2">12:35 - 12:50</div>-->
+<!--                                        <div class="program-desc">Ð£ÑÐ°ÑÑÑ Ð°Ð¿ÑÐµÐº Ñ ÑÐ¸ÑÑÐµÐ¼Ñ e-Health. ÐÐºÑÑÐ°Ð»ÑÐ½Ñ Ð¿Ð¸ÑÐ°Ð½Ð½Ñ-->
+<!--                                        </div>-->
+<!--                                        <div class="program-speaker"><b>Ð®Ð»ÑÑ ÐÐ°Ð´ÐµÑÑÐºÐ°</b>, ÐÐµÑÑÐ²Ð½Ð¸Ðº Ð²ÑÐ´Ð´ÑÐ»Ñ ÑÐ¾Ð·Ð²Ð¸ÑÐºÑ-->
+<!--                                            ÐµÐ»ÐµÐºÑÑÐ¾Ð½Ð½Ð¾Ñ ÑÐ¸ÑÑÐµÐ¼Ð¸ Ð¾ÑÐ¾ÑÐ¾Ð½Ð¸ Ð·Ð´Ð¾ÑÐ¾Ð² Ð¾ÑÐ¾ÑÐ¾Ð½Ð¸ Ð·Ð´Ð¾ÑÐ¾Ð²âÑâÑ e-Health ÐÐ-->
+<!--                                            Â«ÐÐ»ÐµÐºÑÑÐ¾Ð½Ð½Ðµ Ð·Ð´Ð¾ÑÐ¾Ð²âÑÂ», Ð¾Ð½Ð»Ð°Ð¹Ð½-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+                                <div class="program-item">
+                                    <div class="program-time">12:50 - 13:10</div>
+                                    <div class="program-num">9</div>
+                                    <div>
+                                        <div class="program-time2">12:50 - 13:10</div>
+                                        <div class="program-desc">ÐÐµÑÐ¶Ð°Ð²Ð½Ð¸Ð¹ Ð½Ð°Ð³Ð»ÑÐ´ Ð·Ð° Ð´ÑÑÐ»ÑÐ½Ð¾ÑÑÑÑ Ð°Ð¿ÑÐµÑÐ½Ð¸Ñ Ð·Ð°ÐºÐ»Ð°Ð´ÑÐ²
+                                            ÑÐ°
+                                            Ð¾Ð±ÑÐ³Ð¾Ð¼
+                                            Ð»ÑÐºÐ°ÑÑÑÐºÐ¸Ñ Ð·Ð°ÑÐ¾Ð±ÑÐ².
+                                        </div>
+                                        <div class="program-speaker"><b>Ð¡ÐµÑÐµÐ´ Ð·Ð°Ð¿ÑÐ¾ÑÐµÐ½Ð¸Ñ:</b></div>
+                                        <div class="program-speaker"><b>Ð Ð¾Ð¼Ð°Ð½ ÐÑÐ°ÑÐ½ÐºÐ¾</b>, ÐÐ¾Ð»Ð¾Ð²Ð° ÐÐµÑÐ¶Ð»ÑÐºÑÐ»ÑÐ¶Ð±Ð¸
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ³Ð¾Ñ Ð¥Ð¾ÑÐµÐ½ÑÐº</b>, ÐÐµÑÑÐ¸Ð¹ Ð·Ð°ÑÑÑÐ¿Ð½Ð¸Ðº ÐÐ¾Ð»Ð¾Ð²Ð¸
+                                            ÐÐµÑÐ¶Ð»ÑÐºÑÐ»ÑÐ¶Ð±Ð¸
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ»ÐµÐ½Ð° Ð ÐµÑÐºÑÐ½Ð°</b>, ÐÐ¸ÑÐµÐºÑÐ¾Ñ ÐÐµÐ¿Ð°ÑÑÐ°Ð¼ÐµÐ½ÑÑ
+                                            Ð¾Ð¿ÑÐ¾Ð²Ð¾Ñ
+                                            ÑÐ° ÑÐ¾Ð·Ð´ÑÑÐ±Ð½Ð¾Ñ ÑÐ¾ÑÐ³ÑÐ²Ð»Ñ Ð»ÑÐºÐ°ÑÑÑÐºÐ¸Ð¼Ð¸ Ð·Ð°ÑÐ¾Ð±Ð°Ð¼Ð¸
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">13:10 - 13:30</div>
+                                    <div class="program-num">10</div>
+                                    <div>
+                                        <div class="program-time2">13:10 - 13:30</div>
+                                        <div class="program-desc">ÐÐ¸ÐºÐ¾Ð½Ð°Ð½Ð½Ñ Ð¿ÑÐ¾Ð³ÑÐ°Ð¼Ð¸ ÑÐµÑÐ¼Ð±ÑÑÑÐ°ÑÑÑ Ð² ÑÐ¸ÑÑÐµÐ¼Ñ Ð¼ÐµÐ´Ð¸ÑÐ½Ð¸Ñ
+                                            Ð³Ð°ÑÐ°Ð½ÑÑÐ¹.
+                                            Ð Ð¾Ð·Ð²Ð¸ÑÐ¾Ðº Ð¿ÑÐ¾Ð³ÑÐ°Ð¼Ð¸ Â«ÐÐ¾ÑÑÑÐ¿Ð½Ñ Ð»ÑÐºÐ¸Â»
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ°ÑÐ°Ð»ÑÑ ÐÑÑÐ°Ðº</b>, ÐÐ¾Ð»Ð¾Ð²Ð° ÐÐ°ÑÑÐ¾Ð½Ð°Ð»ÑÐ½Ð¾Ñ
+                                            ÑÐ»ÑÐ¶Ð±Ð¸
+                                            Ð·Ð´Ð¾ÑÐ¾Ð²'Ñ Ð£ÐºÑÐ°ÑÐ½Ð¸
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">13:30 - 13:45</div>
+                                    <div class="program-num">11</div>
+                                    <div>
+                                        <div class="program-time2">13:30 - 13:45</div>
+                                        <div class="program-desc">ÐÑÐ¾Ð³ÑÐ°Ð¼Ð½Ðµ Ð·Ð°Ð±ÐµÐ·Ð¿ÐµÑÐµÐ½Ð½Ñ Ð°Ð¿ÑÐµÐº Ð² ÑÐµÐ°Ð»ÑÑÑ Ð²ÑÐ¹Ð½Ð¸
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ¾Ð»Ð¾Ð´Ð¸Ð¼Ð¸Ñ ÐÐ¸ÐºÐ¸ÑÑÐº</b>, PM Proxima Apteka
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">13:45 - 14:45</div>
+                                    <div class="program-num"><img src="img/fastfood.svg" alt=""/></div>
+                                    <div>
+                                        <div class="program-time2">13:45 - 14:45</div>
+                                        <div class="program-desc">ÐÑÐ·Ð½ÐµÑ-Ð»Ð°Ð½Ñ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time" style="color: transparent">9:30 - 9:50</div>
+                                    <div class="program-num"><img src="img/mic.svg" alt=""/></div>
+                                    <div>
+                                        <div class="program-topic">ÐÐ½Ð°Ð»ÑÐ· ÑÐ¸Ð½ÐºÑ. Ð¯Ðº Ð·Ð½Ð°Ð¹ÑÐ¸ ÑÐ¾ÑÐºÐ¸ ÐµÐºÐ¾Ð½Ð¾Ð¼ÑÑÐ½Ð¾Ñ
+                                            ÑÑÐ²Ð½Ð¾Ð²Ð°Ð³Ð¸
+                                        </div>
+                                        <div class="program-speaker">ÐÐ¾Ð´ÐµÑÐ°ÑÐ¾ÑÐ¸:</div>
+                                        <div class="program-speaker"><b>ÐÐ»ÐµÐ½Ð° ÐÑÐ±ÐºÐ¾</b>,
+                                            CCO Proxima Research International
+                                            Ð¡ÐµÑÐ³ÑÐ¹ ÐÑÐ»Ð¸Ðº, ÐµÐºÑÐ¿ÐµÑÑ ÑÐ°ÑÐ¼Ð°ÑÐµÐ²ÑÐ¸ÑÐ½Ð¾Ð³Ð¾ ÑÐ¸Ð½ÐºÑ
+                                        </div>
+                                        <div class="program-speaker"><b>Ð¡ÐµÑÐ³ÑÐ¹ ÐÑÐ»Ð¸Ðº</b>, ÐÑÐ¿ÐµÑÑ ÑÐ°ÑÐ¼Ð°ÑÐµÐ²ÑÐ¸ÑÐ½Ð¾Ð³Ð¾ ÑÐ¸Ð½ÐºÑ
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">14:45 - 15:15</div>
+                                    <div class="program-num">12</div>
+                                    <div>
+                                        <div class="program-time2">14:45 - 15:15</div>
+                                        <div class="program-desc">ÐÐ½Ð°Ð»ÑÐ· ÑÐºÑÐ°ÑÐ½ÑÑÐºÐ¾Ð³Ð¾ ÑÐ°ÑÐ¼ÑÐ¸Ð½ÐºÑ 2022-2023 ÑÑ.
+                                        </div>
+                                        <div class="program-speaker"><b>Ð¡ÐµÑÐ³ÑÐ¹ ÐÑÐµÐ½ÐºÐ¾</b>, Ð¡PO Proxima Research
+                                            International
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">15:15 - 16:15</div>
+                                    <div class="program-num">13</div>
+                                    <div>
+                                        <div class="program-time2">15:15 - 16:15</div>
+                                        <div class="program-desc">ÐÐ°Ð½ÐµÐ»ÑÐ½Ð° Ð´Ð¸ÑÐºÑÑÑÑ Ð»ÑÐ´ÐµÑÑÐ² ÑÐ°ÑÐ¼Ð°ÑÐµÐ²ÑÐ¸ÑÐ½Ð¾Ð³Ð¾ ÑÐ¸Ð½ÐºÑ
+                                            ÑÐ¾Ð´Ð¾
+                                            Ð´ÑÑÐ»ÑÐ½Ð¾ÑÑÑ
+                                            Ð°Ð¿ÑÐµÑÐ½Ð¸Ñ Ð·Ð°ÐºÐ»Ð°Ð´ÑÐ² Ð¿ÑÐ´ ÑÐ°Ñ Ð²Ð¾ÑÐ½Ð½Ð¾Ð³Ð¾ ÑÑÐ°Ð½Ñ
+                                        </div>
+                                        <div class="program-speaker">
+                                            <b>Ð¡ÐµÑÐµÐ´ Ð·Ð°Ð¿ÑÐ¾ÑÐµÐ½Ð¸Ñ:</b>
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ³Ð¾Ñ Ð§ÐµÑÐ²Ð¾Ð½ÐµÐ½ÐºÐ¾</b>, ÐÐ¾Ð»Ð¾Ð²Ð° Ð¿ÑÐ°Ð²Ð»ÑÐ½Ð½Ñ
+                                            Ð³ÑÐ¾Ð¼Ð°Ð´ÑÑÐºÐ¾Ñ ÑÐ¿ÑÐ»ÐºÐ¸ Â«ÐÐ¿ÑÐµÑÐ½Ð° Ð¿ÑÐ¾ÑÐµÑÑÐ¹Ð½Ð° Ð°ÑÐ¾ÑÑÐ°ÑÑÑ Ð£ÐºÑÐ°ÑÐ½Ð¸Â» (ÐÐÐÐ£)
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ»ÐµÐºÑÐ°Ð½Ð´Ñ Ð¡ÑÑÐ¾Ð´Ð¾Ð»ÑÑÑÐºÐ¸Ð¹</b>, ÐÐ¸ÑÐµÐºÑÐ¾Ñ Ð¿Ð¾
+                                            ÑÑÑÐ°ÑÐµÐ³Ð¸ÑÐ½Ð¾Ð¼Ñ ÑÐ¾Ð·Ð²Ð¸ÑÐºÑ ÐÐÐ Â«ÐÐ°ÐÐÂ»
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ²Ð³ÐµÐ½ ÐÐ°ÑÐºÐ°</b>, ÐÐµÐ½ÐµÑÐ°Ð»ÑÐ½Ð¸Ð¹ Ð´Ð¸ÑÐµÐºÑÐ¾Ñ ÐÐ¡ÐÐÐ
+                                            Ð²
+                                            Ð£ÐºÑÐ°ÑÐ½Ñ
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ»ÐµÐ³ ÐÐ¸ÐºÑÐ»Ð¸ÑÐ¸Ð½</b>, ÐÐµÐ½ÐµÑÐ°Ð»ÑÐ½Ð¸Ð¹ Ð´Ð¸ÑÐµÐºÑÐ¾Ñ
+                                            Ð°Ð¿ÑÐµÑÐ½Ð¾Ñ Ð¼ÐµÑÐµÐ¶Ñ Â«D.S.Â»
+                                        </div>
+                                        <div class="program-speaker"><b>Ð®Ð»ÑÑ Ð¡Ð¿Ð°Ð»ÑÐ²ÑÑ</b>, ÐÐµÐ½ÐµÑÐ°Ð»ÑÐ½Ð¸Ð¹ Ð´Ð¸ÑÐµÐºÑÐ¾Ñ
+                                            ÐºÐ¾Ð¼Ð¿Ð°Ð½ÑÑ
+                                            "ÐÑÐ·Ð½ÐµÑ Ð¦ÐµÐ½ÑÑ Ð¤Ð°ÑÐ¼Ð°ÑÑÑ", Ð°Ð¿ÑÐµÑÐ½Ð° Ð¼ÐµÑÐµÐ¶Ð° "ÐÑÑÑÐµÑ-Ð¤Ð°ÑÐ¼"
+                                        </div>
+                                        <div class="program-speaker"><b>Ð¢Ð°ÑÐ°Ñ ÐÐ¾Ð»ÑÐ´Ð°</b>, ÐÐ¸ÐºÐ¾Ð½Ð°Ð²ÑÐ¸Ð¹ Ð´Ð¸ÑÐµÐºÑÐ¾Ñ
+                                            Ð°Ð¿ÑÐµÑÐ½Ð¾Ñ
+                                            Ð¼ÐµÑÐµÐ¶Ñ Â«ÐÐ¾Ð´Ð¾ÑÐ¾Ð¶Ð½Ð¸ÐºÂ»
+                                        </div>
+                                        <div class="program-speaker">
+                                            <b>ÐÐ³Ð¾Ñ ÐÐ°Ð²Ð»Ð¸Ñ</b>, ÐÐ¿ÑÐµÑÐ½Ð° Ð¼ÐµÑÐµÐ¶Ð° Â«3ÐÂ»
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ°ÐºÑÐ¸Ð¼ ÐÑÑÐ½Ð¸ÐºÐ¾Ð²</b>, ÐÐµÑÑÐ²Ð½Ð¸Ðº ÑÐµÐºÑÐ¾ÑÑ Ð°Ð¿ÑÐµÑÐ½Ð¸Ñ
+                                            Ð¼ÐµÑÐµÐ¶ ÐÐ¢ "Ð¤Ð°ÑÐ¼Ð°Ðº"
+                                        </div>
+                                        <div class="program-speaker">
+                                            <b>Ð Ð¾Ð¼Ð°Ð½ ÐÐ°ÑÐºÑÐ²ÑÑÐºÐ¸Ð¹</b>, ÐÐ¸ÑÐµÐºÑÐ¾Ñ Ð· Ð¿ÑÐ¾Ð´Ð°Ð¶ÑÐ² "ÐÐ¸ÑÐ²ÑÑÐºÐ¾Ð³Ð¾ Ð²ÑÑÐ°Ð¼ÑÐ½Ð½Ð¾Ð³Ð¾ Ð·Ð°Ð²Ð¾Ð´Ñ"
+<!--                                            <b>ÐÑÐµÐ´ÑÑÐ°Ð²Ð½Ð¸Ðº ÐºÐ¾Ð¼Ð¿Ð°Ð½ÑÑ "ÐÐÐ"</b>-->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time" style="color: transparent">9:30 - 9:50</div>
+                                    <div class="program-num"><img src="img/mic.svg" alt=""/></div>
+                                    <div>
+                                        <div class="program-topic">ÐÐ¸ÐºÐ»Ð¸ÐºÐ¸ Ð½Ð° ÑÐ»ÑÑÑ Ð´Ð¾ ÑÐ²Ð¸Ð´ÐºÐ¾Ð³Ð¾ Ð²ÑÐ´Ð½Ð¾Ð²Ð»ÐµÐ½Ð½Ñ Ð³Ð°Ð»ÑÐ·Ñ
+                                        </div>
+                                        <!--                                        <div class="program-speaker">ÐÐ¾Ð´ÐµÑÐ°ÑÐ¾ÑÐ¸:</div>-->
+                                        <!--                                        <div class="program-speaker"><b>ÐÐ»ÐµÐ½Ð° ÐÑÐ±ÐºÐ¾</b>, CCO Proxima Research International-->
+                                        <!--                                        </div>-->
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">16:15 -16:45</div>
+                                    <div class="program-num">14</div>
+                                    <div>
+                                        <div class="program-time2">16:15 -16:45</div>
+                                        <div class="program-desc">ÐÐ¾ÑÐ²ÑÐ´ ÑÐ¾Ð±Ð¾ÑÐ¸ ÑÐ° Ð²ÑÐ´Ð½Ð¾Ð²Ð»ÐµÐ½Ð½Ñ Ð°Ð¿ÑÐµÐº Ð½Ð° Ð·Ð²ÑÐ»ÑÐ½ÐµÐ½Ð¸Ñ
+                                            ÑÐµÑÐ¸ÑÐ¾ÑÑÑÑ
+                                        </div>
+                                        <div class="program-speaker"><b>Ð®Ð»ÑÑ ÐÐ»Ð¸Ð¼ÐµÐ½ÑÐº</b>, Chief Digital Officer
+                                            ÐÐ¿ÑÐµÐºÐ¸
+                                            9-1-1
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">16:45 - 17:05</div>
+                                    <div class="program-num">15</div>
+                                    <div>
+                                        <div class="program-time2">16:45 - 17:05</div>
+                                        <div class="program-desc">Ð¡Ð²ÑÑÐ¾Ð²Ñ ÑÑÐµÐ½Ð´Ð¸ ÑÐ°ÑÐ¼Ð°ÑÐµÐ²ÑÐ¸ÑÐ½Ð¾Ð³Ð¾ e-commerce
+                                        </div>
+                                        <div class="program-speaker"><b>Ð¡ÐµÑÐ³ÑÐ¹ ÐÐµÐ³Ð°Ñ</b>, Product Director Pharma
+                                            Retail/E-COM, Proxima Research International
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ¼Ð¸ÑÑÐ¾ ÐÐ¾Ð¿Ð¾Ð²</b>, Product Manager Ð¿ÑÐ¾ÐµÐºÑÑ Apteki.ua, Proxima Research Internationa
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">17:05 - 17:20</div>
+                                    <div class="program-num">16</div>
+                                    <div>
+                                        <div class="program-time2">17:05 - 17:20</div>
+                                        <div class="program-desc">Ð Ð¾Ð·Ð²Ð¸ÑÐ¾Ðº ÑÐ¸Ð½ÐºÑ Ð¾Ð½Ð»Ð°Ð¹Ð½ Ð¼ÐµÐ´Ð¸ÐºÐ°Ð¼ÐµÐ½ÑÑÐ² Ð² Ð£ÐºÑÐ°ÑÐ½Ñ
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ¾Ð³Ð´Ð°Ð½ Ð¡ÑÐµÐ¿Ð°Ð½ÐµÐ½ÐºÐ¾</b>, ÐÐ¸ÑÐµÐºÑÐ¾Ñ Ð· Ð¿ÑÐ¾Ð´Ð°Ð¶ÑÐ²
+                                            ÑÐµÑÐ²ÑÑÑ Ð¾Ð½Ð»Ð°Ð¹Ð½ Ð±ÑÐ¾Ð½ÑÐ²Ð°Ð½Ð½Ñ Ð¼ÐµÐ´Ð¸ÐºÐ°Ð¼ÐµÐ½ÑÑÐ² Likie
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">17:20 - 18:00</div>
+                                    <div class="program-num last-3">17</div>
+                                    <div>
+                                        <div class="program-time2">17:20 - 18:00</div>
+                                        <div class="program-desc">Ð¤Ð°ÑÐ¼Ð°ÑÐµÐ²ÑÐ¸: Ð²ÑÐ¹Ð½Ð° ÑÐ° Ð¼Ð¸Ñ. Ð©Ð¾ Ð·Ð¼ÑÐ½Ð¸Ð»Ð¾ÑÑ Ð² Ð¶Ð¸ÑÑÑ
+                                            Ð¿ÑÐ¾Ð²ÑÐ·Ð¾ÑÐ°,
+                                            ÑÐºÑ
+                                            Ð¾ÑÑÐºÑÐ²Ð°Ð½Ð½Ñ Ð¼Ð°ÑÑÑ ÑÐ¾Ð±ÑÑÐ½Ð¸ÐºÐ¸ "Ð¿ÐµÑÑÐ¾Ð³Ð¾ ÑÑÐ¾Ð»Ñ"?
+                                        </div>
+                                        <div class="program-speaker"><b>Ð¢ÐµÑÑÐ½Ð° ÐÐ¾Ð»ÑÐ´ÐµÐ½ÐºÐ¾</b>, Ð¡ÐÐ MDM
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">18:15 - 18:30</div>
+                                    <div class="program-num preview">18</div>
+                                    <div>
+                                        <div class="program-time2">18:15 - 18:30</div>
+                                        <div class="program-desc">ÐÐ°ÐºÐ»ÑÑÐ½Ðµ ÑÐ»Ð¾Ð²Ð¾
+                                        </div>
+                                        <div class="program-speaker"><b>ÐÐ³Ð¾Ñ Ð§ÐµÑÐ²Ð¾Ð½ÐµÐ½ÐºÐ¾</b>, ÐÐ¾Ð»Ð¾Ð²Ð° Ð¿ÑÐ°Ð²Ð»ÑÐ½Ð½Ñ
+                                            Ð³ÑÐ¾Ð¼Ð°Ð´ÑÑÐºÐ¾Ñ
+                                            ÑÐ¿ÑÐ»ÐºÐ¸
+                                            Â«ÐÐ¿ÑÐµÑÐ½Ð° Ð¿ÑÐ¾ÑÐµÑÑÐ¹Ð½Ð° Ð°ÑÐ¾ÑÑÐ°ÑÑÑ Ð£ÐºÑÐ°ÑÐ½Ð¸Â» (ÐÐÐÐ£)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="program-item">
+                                    <div class="program-time">18:30 - 19:30</div>
+                                    <div class="program-num last-program"><img src="img/cake.svg" alt=""/></div>
+                                    <div>
+                                        <div class="program-time2">18:05 - 19:30</div>
+                                        <div class="program-desc">ÐÐ¾ÐºÑÐµÐ¹Ð»Ñ</div>
+                                    </div>
+                                    <div class="program-abs-4"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="price" id="price">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Ð¦ÑÐ½Ð°</h2>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-12 g-0">
+                <div class="price-card">
+                    <div class="price-container-header radius-left">
+                        <div class="price-title">7 800 â´<span
+                                style="color: red; font-size: 14px;text-transform: none;font-weight: 400;display: inline;margin-left: 10px;">(Ð±ÐµÐ· ÐÐÐ)</span>
+                        </div>
+                        <div class="price-desc">ÐÑÐ³Ð°Ð½ÑÐ·Ð°ÑÑÐ¹Ð½Ð¸Ð¹ Ð²Ð½ÐµÑÐ¾Ðº<br>
+                            Ð·Ð° Ð¾Ð´Ð½Ð¾Ð³Ð¾ ÑÑÐ°ÑÐ½Ð¸ÐºÐ°
+                        </div>
+                    </div>
+                    <div class="price-format">
+                        <h4>ÐÑÐ»Ð°Ð¹Ð½-ÑÐ¾ÑÐ¼Ð°Ñ</h4>
+                        <p><img src="img/check.svg" alt=""/>ÐÑÐ¸ÑÑÑÐ½ÑÑÑÑ Ð² Ð·Ð°Ð»Ñ</p>
+                        <p><img src="img/check.svg" alt=""/>ÐÑÐ´ÐµÐ¾Ð·Ð°Ð¿Ð¸Ñ Ð²Ð¸ÑÑÑÐ¿ÑÐ² ÑÐ¿ÑÐºÐµÑÑÐ²</p>
+                        <p><img src="img/check.svg" alt=""/>ÐÑÐµÐ·ÐµÐ½ÑÐ°ÑÑÐ¹Ð½Ñ Ð¼Ð°ÑÐµÑÑÐ°Ð»Ð¸</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-12 g-0">
+                <div class="price-card">
+                    <div class="price-container-header">
+                        <div class="price-title">6 800 â´<span
+                                style="color: red;font-size: 14px;text-transform: none;font-weight: 400;display: inline;margin-left: 10px; ">(Ð±ÐµÐ· ÐÐÐ)</span>
+                        </div>
+                        <div class="price-desc">ÐÑÐ³Ð°Ð½ÑÐ·Ð°ÑÑÐ¹Ð½Ð¸Ð¹ Ð²Ð½ÐµÑÐ¾Ðº<br>
+                            Ð·Ð° Ð¾Ð´Ð½Ð¾Ð³Ð¾ ÑÑÐ°ÑÐ½Ð¸ÐºÐ°
+                        </div>
+                    </div>
+                    <div class="price-format radius-right">
+                        <h4>ÐÐ½Ð»Ð°Ð¹Ð½-ÑÐ¾ÑÐ¼Ð°Ñ</h4>
+                        <p><img src="img/check.svg" alt=""/>ÐÑÐ¸ÑÑÑÐ½ÑÑÑÑ Ð² Ð·Ð°Ð»Ñ</p>
+                        <p><img src="img/check.svg" alt=""/>ÐÑÐ´ÐµÐ¾Ð·Ð°Ð¿Ð¸Ñ Ð²Ð¸ÑÑÑÐ¿ÑÐ² ÑÐ¿ÑÐºÐµÑÑÐ²</p>
+                        <p><img src="img/check.svg" alt=""/>ÐÑÐµÐ·ÐµÐ½ÑÐ°ÑÑÐ¹Ð½Ñ Ð¼Ð°ÑÐµÑÑÐ°Ð»Ð¸</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-12">
+                <!--                <div class="price-btn-container">-->
+                <!--                    <button class="register-btn program-btn" onclick="allClick()">-->
+                <!--                        <img src="img/register.svg" alt=""/> Ð ÐµÑÑÑÑÐ°ÑÑÑ-->
+                <!--                    </button>-->
+                <!--                </div>-->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-last-summit" id="summit-2021">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Ð¯ÐºÐ¸Ð¼ Ð±ÑÐ² ÑÐ°Ð¼ÑÑ 2021</h2>
+            </div>
+        </div>
+    </div>
+    <div class="summit-abs-1">
+        <div class="summit-abs-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="statistics">
+                            <div class="statistic-container">
+                                <div class="statistic-card">
+                                    <div class="statistic-num">380</div>
+                                    <div class="statistic-desc">ÐÐ°Ð³Ð°Ð»ÑÐ½Ð° ÐºÑÐ»ÑÐºÑÑÑÑ ÑÑÐ°ÑÐ½Ð¸ÐºÑÐ²</div>
+                                </div>
+                                <div class="statistic-card">
+                                    <div class="statistic-num">15</div>
+                                    <div class="statistic-desc">ÐÐµÑÐ¶Ð°Ð²Ð½Ñ ÑÐ»ÑÐ¶Ð±Ð¸ Ð£ÐºÑÐ°ÑÐ½Ð¸</div>
+                                </div>
+                                <div class="statistic-card">
+                                    <div class="statistic-num">2</div>
+                                    <div class="statistic-desc">ÐÐ°ÑÐ¾Ð±Ð¸ Ð¼Ð°ÑÐ¾Ð²Ð¾Ñ ÑÐ½ÑÐ¾ÑÐ¼Ð°ÑÑÑ</div>
+                                </div>
+                                <div class="statistic-card">
+                                    <div class="statistic-num">126</div>
+                                    <div class="statistic-desc">ÐÐ¿ÑÐµÐºÐ¸ Ñ Ð°Ð¿ÑÐµÑÐ½Ñ Ð¼ÐµÑÐµÐ¶Ñ</div>
+                                </div>
+                            </div>
+                            <div class="statistic-container">
+                                <div class="statistic-card">
+                                    <div class="statistic-num">9</div>
+                                    <div class="statistic-desc">ÐÑÐ¾ÑÑÐ»ÑÐ½Ñ Ð°ÑÐ¾ÑÑÐ°ÑÑÑ Ñ Ð³ÑÐ¾Ð¼Ð°Ð´ÑÑÐºÑ Ð¾ÑÐ³Ð°Ð½ÑÐ·Ð°ÑÑÑ</div>
+                                </div>
+                                <div class="statistic-card">
+                                    <div class="statistic-num">24</div>
+                                    <div class="statistic-desc">ÐÐ¾ÑÐ»ÑÐ´Ð½Ñ, ÐºÐ¾Ð½ÑÐ°Ð»ÑÐ¸Ð½Ð³Ð¾Ð²Ñ Ñ ÑÐµÑÐ²ÑÑÐ½Ñ ÐºÐ¾Ð¼Ð¿Ð°Ð½ÑÑ</div>
+                                </div>
+                                <div class="statistic-card">
+                                    <div class="statistic-num">199</div>
+                                    <div class="statistic-desc">ÐÐ¸ÑÐ¾Ð±Ð½Ð¸ÐºÐ¸ ÑÐ°ÑÐ¼. Ð¿ÑÐ¾Ð´ÑÐºÑÑÑ, Ð´Ð¸ÑÑÑÐ¸Ð±'ÑÑÐ¾ÑÐ¸</div>
+                                </div>
+                                <div class="statistic-card">
+                                    <div class="statistic-num">5</div>
+                                    <div class="statistic-desc">ÐÑÐ¶Ð½Ð°ÑÐ¾Ð´Ð½Ñ ÐµÐºÑÐ¿ÐµÑÑÐ¸ ÑÐ°ÑÐ¼Ð°ÑÐµÐ²ÑÐ¸ÑÐ½Ð¾Ð³Ð¾ ÑÐ¸Ð½ÐºÑ</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <img class="last-xl" src="img/last-xl.png" alt=""/>
+                        <img class="last-md" src="img/last-md.png" alt=""/>
+                        <img class="last" src="img/last.png" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="organizers" id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6">
+                <h2>ÐÑÐ³Ð°Ð½ÑÐ·Ð°ÑÐ¾ÑÐ¸</h2>
+                <p class="organizers-name">Proxima Research International</p>
+                <p class="organizers-desc">Ð²ÑÐ´Ð´ÑÐ» ÐºÐ¾Ð½ÑÐµÑÐµÐ½Ñ-ÑÐµÑÐ²ÑÑÑ</p>
+                <p class="organizers-tel">TÐµÐ».: +38 (050) 464 16 40</p>
+                <p class="organizers-mail">Ð-mail: events@proximaresearch.com</p>
+
+                <p class="organizers-name second">UkrComEXPO</p>
+                <p class="organizers-tel">TÐµÐ».: +38 (099) 613-49-63 (7:00 - 10-00 / 18:00 - 22:00)</p>
+                <!--                <p class="organizers-tel">TÐµÐ».: +38 (067) 632-84-07 (10:00 - 18:00)</p>-->
+                <p class="organizers-mail">Ð-mail: conference@ukrcomexpo.com</p>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="organizer-card-container">
+                    <div class="organizer-card-row">
+                        <div class="organizer-card one">
+                            <div class="organizer-title">ÐÑÐ³Ð°Ð½ÑÐ·Ð°ÑÐ¾Ñ</div>
+                            <img src="img/apau.svg" alt=""/>
+                        </div>
+                        <div class="organizer-card two">
+                            <div class="organizer-title">Ð¡Ð¿ÑÐ²Ð¾ÑÐ³Ð°Ð½ÑÐ·Ð°ÑÐ¾Ñ</div>
+                            <img src="img/ucromexpo.svg" alt=""/>
+                        </div>
+                    </div>
+                    <div class="organizer-card-row">
+                        <div class="organizer-card three">
+                            <div class="organizer-title">ÐÐ½Ð°Ð»ÑÑÐ¸ÑÐ½Ð¸Ð¹ Ð¿Ð°ÑÑÐ½ÐµÑ</div>
+                            <img style="width: 137px;" src="img/Proxima_logo_2020(2).png" alt=""/>
+                        </div>
+                        <div class="organizer-card four">
+                            <div class="organizer-title">ÐÐ½ÑÐ¾ÑÐ¼Ð°ÑÑÐ¹Ð½Ð¸Ð¹ Ð¿Ð°ÑÑÐ½ÐµÑ</div>
+                            <img src="img/apteka.svg" alt=""/>
+                        </div>
+                    </div>
+                    <div class="organizer-card-row">
+                        <div class="organizer-card five">
+                            <div class="organizer-title">ÐÐµÐ½ÐµÑÐ°Ð»ÑÐ½Ð¸Ð¹ Ð¿Ð°ÑÑÐ½ÐµÑ</div>
+                            <img style="width: 70px;" src="img/Kus-NEW.png" alt=""/>
+                        </div>
+                        <div class="organizer-card six">
+                            <div class="organizer-title">ÐÐ°ÑÑÐ½ÐµÑ</div>
+                            <img style="width: 150px;" src="img/logo_bionorica.png" alt=""/>
+                        </div>
+                    </div>
+                    <div class="organizer-card-row">
+                        <div class="organizer-card seven">
+                            <div class="organizer-title">ÐÐ°ÑÑÐ½ÐµÑ</div>
+                            <img style="width: 100px;" src="img/nobel.jpg" alt=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="map">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="map-card">
+                    <div class="map-title">ÐÑÑÑÐµ Ð¿ÑÐ¾Ð²ÐµÐ´ÐµÐ½Ð½Ñ</div>
+                    <div class="map-location"><img class="locale-img" src="img/map-location.svg" alt=""/>Ð¼. ÐÐ¸ÑÐ²,
+                        Ð²ÑÐ».Ð.ÐÐ¸ÑÐ¾Ð¼Ð¸ÑÑÑÐºÐ° 2Ð
+                    </div>
+                    <div class="map-place">ÐÐ¾ÑÐµÐ»Ñ</div>
+                    <div class="map-place-name">InterContinental</div>
+                    <div class="map-place-floor">- 2 Ð¿Ð¾Ð²ÐµÑÑ</div>
+                    <div class="map-icon">
+                        <img class="hotel" src="img/map-img.jpg" alt=""/>
+                        <div class="map-bg-2">
+                            <div class="map-text-2">ÐÐ°ÑÑÐ´ Ð² <br>ÑÐºÑÐ¸ÑÑÑ</div>
+                        </div>
+                    </div>
+                    <!--                    <div>-->
+                    <!--                        <button class="register-btn" onclick="allClick()">-->
+                    <!--                            <img src="img/register.svg" alt=""/> Ð ÐµÑÑÑÑÐ°ÑÑÑ-->
+                    <!--                        </button>-->
+                    <!--                    </div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.223062412827!2d30.5195749!3d50.4555708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce44dc6e253f%3A0xbe62b362eb81b4e0!2z0LLRg9C70LjRhtGPINCS0LXQu9C40LrQsCDQltC40YLQvtC80LjRgNGB0YzQutCwLCAy0JAsINCa0LjRl9CyLCAwMjAwMA!5e0!3m2!1suk!2sua!4v1668617662019!5m2!1suk!2sua"
+            width="100%" height="733" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="copyright-container">
+                    <p class="policy">ÐÐ¾Ð»ÑÑÐ¸ÐºÐ° ÐºÐ¾Ð½ÑÑÐ´ÐµÐ½ÑÑÐ¹Ð½Ð¾ÑÑÑ</p>
+                    <p class="copyright">12-Ð¹ Ð°Ð¿ÑÐµÑÐ½Ð¸Ð¹ ÑÐ°Ð¼ÑÑ 2022 Â© 2022</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<script>
+    new Vue({
+        components: {
+            webconf: webconf,
+        },
+        data: {
+            disabled: {},
+        },
+        provide: {
+            disabled: 'disabled',
+        },
+    }).$mount('#app');
+
+</script>
+
+<script>
+    function allClick() {
+        var btn = document.querySelector('.request-form .btn.register');
+        btn.click();
+    }
+</script>
+<script src="js/burger.js"></script>
+<script src="js/timers-ru.js"></script>
+</html>

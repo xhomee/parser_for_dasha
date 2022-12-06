@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" name="viewport"/>
+<meta content="ie=edge" http-equiv="X-UA-Compatible"/>
+<title>Аптечний саміт</title>
+<meta content="" name="description"/>
+<!--    <link rel="icon" href="img/favicon/favicon.ico">-->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&amp;display=swap" rel="stylesheet"/>
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" rel="stylesheet"/>
+<!--    <link rel="stylesheet" href="../fonts/stylesheet.css">-->
+<!--    <link rel="stylesheet" href="../css/comp-cont.css">-->
+<link href="css/styles.css" rel="stylesheet"/>
+<link href="css/style-timer.css" rel="stylesheet"/>
+<link href="../../webinars/dist/webconf.css" rel="stylesheet"/>
+<script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+<script src="../../webinars/dist/webconf.umd.min.js"></script>
+<style>
+        .request-form button.register.btn.btn-outline-success.mx-2 {
+            display: none !important;
+        }
+
+        .col-sm.participant h6 {
+            margin-top: 20px;
+        }
+
+        .form-group {
+            margin-top: 10px;
+        }
+
+        /*--------------------------------*/
+        @media (max-width: 575.98px) {
+            .form-control {
+                width: 100%;
+            !important;
+            }
+        }
+
+        /*#request-form .row {*/
+        /*    flex-direction: column !important;*/
+        /*}*/
+
+        /*.modal-body .row {*/
+        /*    flex-direction: column;*/
+        /*}*/
+        .modal-content {
+            max-width: 550px;
+            margin: 0 auto;
+        }
+
+        .modal-body .row {
+            display: block;
+        !important;
+        }
+
+        /*#request-form .col-sm.company .form-group.country,*/
+        /*#request-form .col-sm.company .form-group.name,*/
+        /*#request-form .col-sm.company .form-group.position,*/
+        /*#request-form .col-sm.company .form-group.address,*/
+        /*#request-form .col-sm.company .form-group.contact,*/
+        /*#request-form .col-sm.company .form-group.phone,*/
+        #request-form .col-sm.company .form-group.name,
+        #request-form .col-sm.company .form-group.total {
+            display: none;
+        }
+
+        #request-form .btn-outline-success.mx-2 {
+            color: #1E1E1E;;
+            border-color: #FFF500;
+            background-color: #FFF500;
+            border-radius: 40px;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 160%;
+            padding: 20px 40px;
+        }
+
+        .btn-outline-success.mx-2:hover {
+            background-color: #FFF500;
+            outline: none;
+            border-color: #FFF500;
+            color: #016BAF;
+        }
+
+        .form-control[required] {
+            border-color: #ced4da;
+            border-width: 2px;
+        }
+
+        .border-danger {
+            border-color: #ced4da !important;
+        }
+
+        .btn.btn-outline-danger.float-right:hover {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        .btn-outline-success:hover {
+            background-color: #28a745;
+            color: white;
+        }
+
+        .modal.show .modal-dialog.modal-xl .modal-content .modal-body #request-form .col-12.text-danger {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 160%;
+            color: #FFDA3E !important;
+        }
+
+        .modal.show .modal-dialog.modal-xl .modal-content .modal-body #request-form .col-12.text-danger:after {
+            content: "*";
+            margin-left: 5px;
+        }
+
+        .modal.show .modal-dialog.modal-xl .modal-content .modal-body #request-form .col-sm.participant {
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 160%;
+            color: #FFFFFF !important;
+        }
+
+        .modal.show .modal-dialog.modal-xl .modal-content .modal-body #request-form .my-3.border-bottom.border-danger .text-danger {
+            /*font-style: normal;*/
+            /*font-weight: 500;*/
+            /*font-size: 16px;*/
+            /*line-height: 160%;*/
+            /*color: #FFDA3E !important;*/
+            display: none;
+        }
+
+        .btn.btn-outline-secondary {
+            border: 2px solid #FFFFFF;
+            font-style: normal;
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 160%;
+            color: #FFFFFF;
+        }
+
+        @media screen and (min-width: 320px) and (max-width: 600px) {
+
+            .modal.show .modal-dialog.modal-xl .modal-content {
+                padding: 10px !important;
+            }
+
+            .modal-footer {
+                padding: 0;
+            }
+
+            .modal.show .modal-content .modal-footer > .btn-outline-success,
+            .modal.show .modal-content .modal-footer > .btn-outline-secondary {
+                padding: 5px 40px;
+            }
+        }
+
+        .btn-outline-success:hover,
+        .text-danger .btn-outline-danger.float-right:hover {
+            background: #FFDA3E;
+        !important;
+            color: #016BAF;
+            border-color: #FFDA3E;
+        !important;
+        }
+
+        .btn-outline-secondary:hover {
+            background: transparent;
+            color: white;
+        }
+
+        #request-form label {
+            font-style: normal;
+            font-weight: 400;
+            font-size: 13px;
+            line-height: 160%;
+            color: #FFFFFF;
+        }
+
+        .col-sm.company h6 {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 160%;
+            color: #FFFFFF;
+        }
+
+        .modal-title {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 160%;
+            color: #FFFFFF;
+        }
+
+        .modal-content {
+            border-radius: 32px;
+            /*padding: 35px 35px;*/
+            padding: 10px 35px;
+            background: white linear-gradient(179.95deg, #016BAF -23.58%, rgba(16, 143, 207, 0.29) 164.92%);
+        }
+
+        .close {
+            color: rgba(255, 218, 62, 1);
+            opacity: 1;
+            border: none;
+            background-color: transparent;
+        }
+
+        .close:focus,
+        .close:focus-visible {
+            outline: none;
+        }
+
+        .btn-outline-danger,
+        .btn-outline-success {
+            color: #016BAF;
+            border-color: #FFDA3E;
+            background-color: #FFDA3E;
+        }
+
+        .btn-outline-success {
+            padding: 10px 60px;
+        }
+
+        .form-group input {
+            /*height: 48px;*/
+            border-radius: 6px;
+        }
+
+        .form-group label:after {
+            content: "*";
+            color: #FFDA3E;
+            margin-left: 5px;
+        }
+
+        .form-group.promo label:after {
+            content: "";
+        !important;
+        }
+
+        .form-group.tax label:after {
+            content: "";
+        !important;
+        }
+
+        .request-form .dialog-box.success .modal-dialog.modal-md .modal-content.modal-body div {
+            color: #FFFFFF;
+        !important;
+        }
+
+        .form-group.lang .form-control option:nth-of-type(2) {
+            display: none;
+        }
+
+
+        .stream-name.form-check.form-check-inline .form-check-label.mr-3 {
+            color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+    </style>
+</head>
+<body>
+<header>
+<div class="container">
+<div class="row">
+<div class="col-2">
+<a class="logo-main" href="">
+<img alt="Аптечний саміт" src="img/Logo.png"/>
+</a>
+</div>
+<div class="header-menu col-xl-7 col-8 offset-2 offset-xl-3 d-flex justify-content-end align-items-center">
+<a class="header-list" href="#about-summit">Про саміт</a>
+<a class="header-list" href="#program">Програма</a>
+<a class="header-list" href="#price">Ціна</a>
+<a class="header-list" href="#summit-2021">Саміт 2021</a>
+<a class="header-list" href="#contact">Контакти та місце</a>
+</div>
+<!--only mobile-->
+<div class="burger-menu">
+<ul class="menu">
+<li><a class="menuItem" href="#about-summit">Про саміт</a></li>
+<li><a class="menuItem" href="#program">Програма</a></li>
+<li><a class="menuItem" href="#price">Ціна</a></li>
+<li><a class="menuItem" href="#summit-2021">Саміт 2021</a></li>
+<li><a class="menuItem" href="#contact">Контакти та місце</a></li>
+</ul>
+<button class="hamburger" onclick="myFunction(this)">
+<span class="bars">
+<span class="bar1"></span>
+<span class="bar2"></span>
+<span class="bar3"></span>
+</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<main class="bg-main main-card">
+<div class="container padding-main">
+<div class="row">
+<div class="container-left col-12 col-md-6">
+<div class="d-flex justify-content-between">
+<div class="title-text-1">12-й</div>
+<div class="title-bg-2">
+<div class="title-text-2">Захід в <br/>укритті</div>
+</div>
+</div>
+<div class="title-text-3">аптечний саміт</div>
+<div class="d-flex">
+<div class="title-text-4">України</div>
+<div class="title-text-5">2022</div>
+</div>
+<div>
+<div>
+<div class="bg-place">
+<div class="title-text-6">
+<img alt="" src="img/location.svg"/>м. Київ, вул.В.Житомирська 2А
+                            </div>
+<div class="title-text-7">готель InterContinental 5*, - 2 поверх</div>
+</div>
+</div>
+<div>
+<div class="bg-place mt-1">
+<div class="title-text-8"><img alt="" src="img/calendar.svg"/> 6 грудня 2022</div>
+</div>
+</div>
+</div>
+<!--                <div>-->
+<!--                    <button class="register-btn header-btn" onclick="allClick()">-->
+<!--                        <img src="img/register.svg" alt=""/> Реєстрація-->
+<!--                    </button>-->
+<!--                </div>-->
+</div>
+<div class="container-right col-12 col-md-6">
+<div class="container-map">
+<img alt="" class="map-main1" src="img/map-main.svg"/>
+</div>
+<div class="row">
+<div class="col-lg-8 offset-lg-2 col-xl-7 offset-xl-3 col-xxl-6 offset-xxl-3 d-flex justify-content-end">
+<div class="timer">
+<div class="timer-heading">До початку залишилось:</div>
+<div class="container-timer">
+<div class="timer__items">
+<div class="timer__item timer__days">00</div>
+<div class="timer__item timer__hours">00</div>
+<div class="timer__item timer__minutes">00</div>
+<div class="timer__item timer__seconds">00</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- APP REGISTRATION -->
+<div class="container-fluid" id="app" style="margin-bottom: 50px;">
+<webconf :noreg="false" date="2021-12-06 9:30:00" event="943ed68b-154b-41f3-a5ed-c38b3e7b1658">
+</webconf>
+</div>
+<section class="about-summit about-summit-container" id="about-summit">
+<div class="container">
+<div class="row">
+<div class="col-12 col-xl-5 col-lg-6 offset-lg-0 col-md-10 offset-md-1">
+<div class="about-summit-desc-container">
+<h2>Про саміт</h2>
+<p class="about-summit-desc">Головна подія року для аптечного ринку «Аптечний саміт України» - це
+                        регулярний <b>з'їзд професіоналів</b>
+                        фармацевтичного ринку з ретельно продуманим складом доповідачів і відмінними можливостями для
+                        ділових комунікацій. Ринкова ситуація і умови роботи галузі змінюються постійно, а сьогодні ці
+                        зміни
+                        є непередбачуваними, тому дуже важливо бути в курсі того, <b>що чекає аптечний бізнес
+                            сьогодні</b> та після
+                        нашої Перемоги. Саміт дає гарну можливість <b>ознайомитися з досвідом</b>, як вести бізнес під
+                        час війни,
+                        обговорити умови дистрибуції і роздробу, обмінятися інсайдом щодо ринкової ситуації і виробити
+                        стратегію розвитку фармації на найближче майбутнє.</p>
+</div>
+</div>
+<div class="col-12 col-xl-6 offset-xl-1 col-lg-6 offset-lg-0 col-md-8 offset-md-2">
+<img alt="" class="about-summit-img" src="img/aout-summit.jpg">
+</img></div>
+</div>
+</div>
+</section>
+<section class="program" id="program">
+<div class="program-abs-1">
+<div class="program-abs-2">
+<div class="program-abs-3">
+<div class="container">
+<div class="row">
+<div class="col-12">
+<div class="program-container">
+<h2>Програма саміту</h2>
+<div class="program-item">
+<div class="program-time">9:00 - 9:30</div>
+<div class="program-num">1</div>
+<div>
+<div class="program-time2">9:00 - 9:30</div>
+<div class="program-desc">РЕЄСТРАЦІЯ/КАВА-ПАУЗА</div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">9:30 - 9:50</div>
+<div class="program-num">2</div>
+<div>
+<div class="program-time2">9:30 - 9:50</div>
+<div class="program-desc">Аптечний саміт України. Поточна ситуація</div>
+<div class="program-speaker"><b>Ігор Червоненко</b>, голова правління
+                                            громадської
+                                            спілки
+                                            «Аптечна професійна асоціація України» (АПАУ)
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time" style="color: transparent">9:30 - 9:50</div>
+<div class="program-num"><img alt="" src="img/mic.svg"/></div>
+<div>
+<div class="program-topic">Держава та бізнес. Трансформація взаємовідносин
+                                        </div>
+<div class="program-speaker">Модератори:</div>
+<div class="program-speaker"><b>Артур Ротар</b>, BU Head Proxima Research
+                                            International
+                                        </div>
+<div class="program-speaker"><b>Володимир Ігнатов </b>, Виконавчий директор AIPM
+                                            Ukraine
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">10:00 - 10:45</div>
+<div class="program-num">3</div>
+<div>
+<div class="program-time2">10:00 - 10:45</div>
+<div class="program-desc">Нові законодавчі зміни у фармацевтичній галузі.
+                                            Створення
+                                            нового
+                                            регуляторного органу, ліцензійні умови, актуальні питання діяльності
+                                            аптек
+                                        </div>
+<!--                                        <div class="program-speaker"><b>Представники Держави</b></div>-->
+<div class="program-speaker"><b>Серед запрошених:</b></div>
+<div class="program-speaker"><b>Олександр Комаріда</b>, Перший заступник
+                                            Міністра Охорони Здоров'я
+                                        </div>
+<div class="program-speaker"><b>Денис Кудін</b>, Перший заступник Міністра
+                                            Економіки України
+                                        </div>
+<div class="program-speaker"><b>Сергій Кузьміних</b>, Народний Депутат
+                                            України,
+                                            Голова підкомітету з питань фармації та фармацевтичної діяльності
+                                            Комітету
+                                            Верховної Ради України з питань здоров’я нації, медичної допомоги та
+                                            медичного страхування
+                                        </div>
+<div class="program-speaker"><b>Юрій Заславський</b>, Народний Депутат
+                                            України
+                                        </div>
+<div class="program-speaker"><b>Валерій Зуб</b>, Народний депутат України
+                                        </div>
+<div class="program-speaker"><b>Оксана Дмітрієва</b>, Народний депутат
+                                            України,
+                                            заступник голови Комітету Верховної Ради України з питань здоров'я
+                                            нації,
+                                            медичної допомоги та медичного страхування
+                                        </div>
+<div class="program-speaker"><b>Олексій Соловйов</b>, заступник Секретаря
+                                            Ради
+                                            національної безпеки і оборони України
+                                        </div>
+<!--                                        <div class="program-speaker"><b>Іван Задворних</b>, в. о. генерального-->
+<!--                                            директора-->
+<!--                                            директорату фармацевтичного забезпечення-->
+<!--                                        </div>-->
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">10:45 - 11:05</div>
+<div class="program-num">4</div>
+<div>
+<div class="program-time2">10:45 - 11:05</div>
+<div class="program-desc">Огляд законодавчих новин. Нові нормативні акти в
+                                            країні
+                                            під
+                                            час
+                                            воєнного стану
+                                        </div>
+<div class="program-speaker"><b>Дмитро Алешко</b>, партнер ЮК «Правовий
+                                            альянс»,
+                                            Адвокат
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">11:05 - 11:20</div>
+<div class="program-num">5</div>
+<div>
+<div class="program-time2">11:05 - 11:20</div>
+<div class="program-desc">Репарації. На що чекати після Перемоги?
+                                        </div>
+<div class="program-speaker"><b>Микола Орлов</b>, керуючий партнер ЮК "OMP",
+                                            Адвокат
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">11:20 - 11:30</div>
+<div class="program-num">5</div>
+<div>
+<div class="program-time2">11:20 - 11:30</div>
+<div class="program-desc">Заради майбутнього. Заради життя.
+                                        </div>
+<div class="program-speaker"><b>Володимир Косенков</b>, PR-менеджер групи
+                                            фармацевтичних компаній "Кусум"
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time" style="color: transparent">9:30 - 9:50</div>
+<div class="program-num"><img alt="" src="img/mic.svg"/></div>
+<div>
+<div class="program-topic">E-Health. Невпинний розвиток</div>
+<div class="program-speaker">Модератори:</div>
+<div class="program-speaker"><b>Сергій Орлик</b>, експерт фармацевтичного
+                                            ринку
+                                        </div>
+<div class="program-speaker"><b>Юлія Спальвіш</b>, генеральний директор компанії
+                                            "Бізнес Центр Фармація",
+                                            аптечна мережа "Астрея-Фарм"
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">11:50 - 12:05</div>
+<div class="program-num">6</div>
+<div>
+<div class="program-time2">11:50 - 12:05</div>
+<div class="program-desc">Рік 2022 для Національного фармацевтичного
+                                            університету. Сталість та турбулентність в освіті.
+                                        </div>
+<div class="program-speaker"><b>Алла Котвіцька</b>, ректор Національного
+                                            фармацевтичного університету
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">12:05 - 12:25</div>
+<div class="program-num">6</div>
+<div>
+<div class="program-time2">12:05 - 12:25</div>
+<div class="program-desc">Впровадження е-рецепта: підсумки відпуску антибіотиків
+                                            та наркотичних (психотропних) ліків та плани щодо відпуску всіх
+                                            Rx-препаратів. Перспективи та нові можливості ЕСОЗ для аптек у 2023 році.
+                                        </div>
+<div class="program-speaker"><b>Ірина Ліштаба</b>, Експертка з фармацевтичних
+                                            питань. Керівниця групи бізнес аналізу проекту Електронний рецепт ДП
+                                            «Електронне здоровʼя»
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">12:25 - 12:45</div>
+<div class="program-num">7</div>
+<div>
+<div class="program-time2">12:25 - 12:45</div>
+<div class="program-desc">Участь аптек у системі e-Health. Актуальні питання
+                                        </div>
+<div class="program-speaker"><b>Юлія Задеряка</b>, керівник відділу розвитку
+                                            електронної системи охорони здоров охорони здоров’я’я e-Health ДП
+                                            «Електронне здоров’я», онлайн
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">12:45 - 13:05</div>
+<div class="program-num">8</div>
+<div>
+<div class="program-time2">12:45 - 13:05</div>
+<div class="program-desc">Державний нагляд за діяльносттю аптечних закладів
+                                            та
+                                            обігом
+                                            лікарських засобів.
+                                        </div>
+<div class="program-speaker"><b>Серед запрошених:</b></div>
+<div class="program-speaker"><b>Роман Ісаєнко</b>, Голова Держлікслужби
+                                        </div>
+<div class="program-speaker"><b>Ігор Хотенюк</b>, Перший заступник Голови
+                                            Держлікслужби
+                                        </div>
+<div class="program-speaker"><b>Олена Речкіна</b>, Директор Департаменту
+                                            оптової
+                                            та роздрібної торгівлі лікарськими засобами
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">13:05 - 13:25</div>
+<div class="program-num">9</div>
+<div>
+<div class="program-time2">13:05 - 13:25</div>
+<div class="program-desc">Виконання програми реімбурсації в системі медичних
+                                            гарантій.
+                                            Розвиток програми «Доступні ліки»
+                                        </div>
+<div class="program-speaker"><b>Наталія Гусак</b>, Голова Національної
+                                            служби
+                                            здоров'я України
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">13:25 - 13:40</div>
+<div class="program-num">10</div>
+<div>
+<div class="program-time2">13:25 - 13:40</div>
+<div class="program-desc">Програмне забезпечення аптек в реаліях війни
+                                        </div>
+<div class="program-speaker"><b>Володимир Нікітюк</b>, PM Proxima Apteka
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">13:40 - 14:30</div>
+<div class="program-num"><img alt="" src="img/fastfood.svg"/></div>
+<div>
+<div class="program-time2">13:40 - 14:30</div>
+<div class="program-desc">Бізнес-ланч
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time" style="color: transparent">9:30 - 9:50</div>
+<div class="program-num"><img alt="" src="img/mic.svg"/></div>
+<div>
+<div class="program-topic">Аналіз ринку. Як знайти точки економічної
+                                            рівноваги
+                                        </div>
+<div class="program-speaker">Модератори:</div>
+<div class="program-speaker"><b>Олена Зубко</b>,
+                                            CCO Proxima Research International
+                                            Сергій Орлик, експерт фармацевтичного ринку
+                                        </div>
+<div class="program-speaker"><b>Сергій Орлик</b>, експерт фармацевтичного ринку
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">14:30 - 15:10</div>
+<div class="program-num">11</div>
+<div>
+<div class="program-time2">14:30 - 15:10</div>
+<div class="program-desc">Аналіз фармринку 2022-2023
+                                        </div>
+<div class="program-speaker"><b>Сергій Іщенко</b>, СPO Proxima Research
+                                            International
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">15:10 - 16:10</div>
+<div class="program-num">12</div>
+<div>
+<div class="program-time2">15:10 - 16:10</div>
+<div class="program-desc">Панельна дискусія лідерів фармацевтичного ринку
+                                            щодо
+                                            діяльності
+                                            аптечних закладів під час воєнного стану
+                                        </div>
+<div class="program-speaker"><b>Серед запрошених:</b></div>
+<div class="program-speaker"><b>Ігор Червоненко</b>, Голова правління
+                                            громадської спілки «Аптечна професійна асоціація України» (АПАУ)
+                                        </div>
+<div class="program-speaker"><b>Олександр Суходольський</b>, Директор по
+                                            стратегичному розвитку ООО «БаДМ»
+                                        </div>
+<div class="program-speaker"><b>Євген Заїка</b>, Генеральний директор АСІНО
+                                            в
+                                            Україні
+                                        </div>
+<div class="program-speaker"><b>Олег Никулишин</b> , Генеральний директор
+                                            аптечної мережі «D.S.»
+                                        </div>
+<div class="program-speaker"><b>Юлія Спальвіш</b>, Генеральний директор
+                                            компанії
+                                            "Бізнес Центр Фармація", аптечна мережа "Астрея-Фарм"
+                                        </div>
+<div class="program-speaker"><b>Тарас Коляда</b>, Виконавчий директор
+                                            аптечної
+                                            мережі «Подорожник»
+                                        </div>
+<div class="program-speaker"><b>Ігор Павлиш</b>, Аптечна мережа «3І»</div>
+<div class="program-speaker"><b>Максим Мясников</b>, Керівник сектору аптечних
+                                            мереж АТ "Фармак"
+                                        </div>
+<div class="program-speaker"><b>Представник компанії "КВЗ"</b></div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time" style="color: transparent">9:30 - 9:50</div>
+<div class="program-num"><img alt="" src="img/mic.svg"/></div>
+<div>
+<div class="program-topic">Виклики на шляху до швидкого відновлення галузі
+                                        </div>
+<!--                                        <div class="program-speaker">Модератори:</div>-->
+<!--                                        <div class="program-speaker"><b>Олена Зубко</b>, CCO Proxima Research International-->
+<!--                                        </div>-->
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">16:10 -16:35</div>
+<div class="program-num">14</div>
+<div>
+<div class="program-time2">16:10 -16:35</div>
+<div class="program-desc">Досвід роботи та відновлення аптек на звільнених
+                                            територіях
+                                        </div>
+<div class="program-speaker"><b>Юлія Клименюк</b>, Chief Digital Officer
+                                            Аптеки
+                                            9-1-1
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">16:30 - 17:00</div>
+<div class="program-num">13</div>
+<div>
+<div class="program-time2">16:30 - 17:00</div>
+<div class="program-desc">Світові тренди фармацевтичного e-commerce
+                                        </div>
+<div class="program-speaker"><b>Сергій Бегар</b>, Product Director Pharma
+                                            Retail/E-COM, Proxima Research International
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">17:00 - 17:15</div>
+<div class="program-num">15</div>
+<div>
+<div class="program-time2">17:00 - 17:15</div>
+<div class="program-desc">Розвиток ринку онлайн медикаментів в Україні
+                                        </div>
+<div class="program-speaker"><b>Євген Васильцов</b>, СЕО сервісу онлайн
+                                            бронювання медикаментів Likie
+                                        </div>
+<div class="program-speaker"><b>Богдан Степаненко</b>, директор з продажів
+                                            сервісу онлайн бронювання медикаментів Likie
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">17:15 - 17:55</div>
+<div class="program-num last-3">16</div>
+<div>
+<div class="program-time2">17:15 - 17:55</div>
+<div class="program-desc">Фармацевти: війна та мир. Що змінилось в житті
+                                            провізора,
+                                            які
+                                            очікування мають робітники "першого столу"?
+                                        </div>
+<div class="program-speaker"><b>Тетяна Жолуденко</b>, СЕО MDM
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">17:55 - 18:05</div>
+<div class="program-num preview">17</div>
+<div>
+<div class="program-time2">17:05 - 18:05</div>
+<div class="program-desc">Заключне слово
+                                        </div>
+<div class="program-speaker"><b>Ігор Червоненко</b>, голова правління
+                                            громадської
+                                            спілки
+                                            «Аптечна професійна асоціація України» (АПАУ)
+                                        </div>
+</div>
+</div>
+<div class="program-item">
+<div class="program-time">18:05 - 19:30</div>
+<div class="program-num last-program"><img alt="" src="img/cake.svg"/></div>
+<div>
+<div class="program-time2">18:05 - 19:30</div>
+<div class="program-desc">Коктейль</div>
+</div>
+<div class="program-abs-4"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="price" id="price">
+<div class="container">
+<div class="row">
+<div class="col-12">
+<h2>Ціна</h2>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="row">
+<div class="col-lg-4 col-md-6 col-12 g-0">
+<div class="price-card">
+<div class="price-container-header radius-left">
+<div class="price-title">7 800 ₴<span style="color: red; font-size: 14px;text-transform: none;font-weight: 400;display: inline;margin-left: 10px;">(без ПДВ)</span>
+</div>
+<div class="price-desc">Організаційний внесок<br/>
+                            за одного учасника
+                        </div>
+</div>
+<div class="price-format">
+<h4>Офлайн-формат</h4>
+<p><img alt="" src="img/check.svg"/>Присутність в залі</p>
+<p><img alt="" src="img/check.svg"/>Відеозапис виступів спікерів</p>
+<p><img alt="" src="img/check.svg"/>Презентаційні матеріали</p>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-6 col-12 g-0">
+<div class="price-card">
+<div class="price-container-header">
+<div class="price-title">6 800 ₴<span style="color: red;font-size: 14px;text-transform: none;font-weight: 400;display: inline;margin-left: 10px; ">(без ПДВ)</span>
+</div>
+<div class="price-desc">Організаційний внесок<br/>
+                            за одного учасника
+                        </div>
+</div>
+<div class="price-format radius-right">
+<h4>Онлайн-формат</h4>
+<p><img alt="" src="img/check.svg"/>Присутність в залі</p>
+<p><img alt="" src="img/check.svg"/>Відеозапис виступів спікерів</p>
+<p><img alt="" src="img/check.svg"/>Презентаційні матеріали</p>
+</div>
+</div>
+</div>
+<div class="col-lg-4 col-md-12 col-12">
+<!--                <div class="price-btn-container">-->
+<!--                    <button class="register-btn program-btn" onclick="allClick()">-->
+<!--                        <img src="img/register.svg" alt=""/> Реєстрація-->
+<!--                    </button>-->
+<!--                </div>-->
+</div>
+</div>
+</div>
+</section>
+<section class="about-last-summit" id="summit-2021">
+<div class="container">
+<div class="row">
+<div class="col-12">
+<h2>Яким був саміт 2021</h2>
+</div>
+</div>
+</div>
+<div class="summit-abs-1">
+<div class="summit-abs-2">
+<div class="container">
+<div class="row">
+<div class="col-12">
+<div class="statistics">
+<div class="statistic-container">
+<div class="statistic-card">
+<div class="statistic-num">380</div>
+<div class="statistic-desc">Загальна кількість учасників</div>
+</div>
+<div class="statistic-card">
+<div class="statistic-num">15</div>
+<div class="statistic-desc">Державні служби України</div>
+</div>
+<div class="statistic-card">
+<div class="statistic-num">2</div>
+<div class="statistic-desc">Засоби масової інформації</div>
+</div>
+<div class="statistic-card">
+<div class="statistic-num">126</div>
+<div class="statistic-desc">Аптеки і аптечні мережі</div>
+</div>
+</div>
+<div class="statistic-container">
+<div class="statistic-card">
+<div class="statistic-num">9</div>
+<div class="statistic-desc">Профільні асоціації і громадські організації</div>
+</div>
+<div class="statistic-card">
+<div class="statistic-num">24</div>
+<div class="statistic-desc">Дослідні, консалтингові і сервісні компанії</div>
+</div>
+<div class="statistic-card">
+<div class="statistic-num">199</div>
+<div class="statistic-desc">Виробники фарм. продукції, дистриб'ютори</div>
+</div>
+<div class="statistic-card">
+<div class="statistic-num">5</div>
+<div class="statistic-desc">Міжнародні експерти фармацевтичного ринку</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-12">
+<img alt="" class="last-xl" src="img/last-xl.png"/>
+<img alt="" class="last-md" src="img/last-md.png"/>
+<img alt="" class="last" src="img/last.png"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="organizers" id="contact">
+<div class="container">
+<div class="row">
+<div class="col-12 col-lg-6">
+<h2>Організатори</h2>
+<p class="organizers-name">Proxima Research International</p>
+<p class="organizers-desc">відділ конференц-сервісу</p>
+<p class="organizers-tel">Tел.: +38 (050) 464 16 40</p>
+<p class="organizers-mail">Е-mail: events@proximaresearch.com</p>
+<p class="organizers-name second">UkrComEXPO</p>
+<p class="organizers-tel">Tел.: +38 (099) 613-49-63 (7:00 - 10-00 / 18:00 - 22:00)</p>
+<!--                <p class="organizers-tel">Tел.: +38 (067) 632-84-07 (10:00 - 18:00)</p>-->
+<p class="organizers-mail">Е-mail: conference@ukrcomexpo.com</p>
+</div>
+<div class="col-12 col-lg-6">
+<div class="organizer-card-container">
+<div class="organizer-card-row">
+<div class="organizer-card one">
+<div class="organizer-title">Організатор</div>
+<img alt="" src="img/apau.svg"/>
+</div>
+<div class="organizer-card two">
+<div class="organizer-title">Співорганізатор</div>
+<img alt="" src="img/ucromexpo.svg"/>
+</div>
+</div>
+<div class="organizer-card-row">
+<div class="organizer-card three">
+<div class="organizer-title">Аналітичний партнер</div>
+<img alt="" src="img/Proxima_logo_2020(2).png" style="width: 137px;"/>
+</div>
+<div class="organizer-card four">
+<div class="organizer-title">Інформаційний партнер</div>
+<img alt="" src="img/apteka.svg"/>
+</div>
+</div>
+<div class="organizer-card-row">
+<div class="organizer-card five">
+<div class="organizer-title">Генеральний партнер</div>
+<img alt="" src="img/Kus-NEW.png" style="width: 70px;"/>
+</div>
+<div class="organizer-card six">
+<div class="organizer-title">Партнер</div>
+<img alt="" src="img/logo_bionorica.png" style="width: 150px;"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="map">
+<div class="container">
+<div class="row">
+<div class="col-12">
+<div class="map-card">
+<div class="map-title">Місце проведення</div>
+<div class="map-location"><img alt="" class="locale-img" src="img/map-location.svg"/>м. Київ,
+                        вул.В.Житомирська 2А
+                    </div>
+<div class="map-place">Готель</div>
+<div class="map-place-name">InterContinental</div>
+<div class="map-place-floor">- 2 поверх</div>
+<div class="map-icon">
+<img alt="" class="hotel" src="img/map-img.jpg"/>
+<div class="map-bg-2">
+<div class="map-text-2">Захід в <br/>укритті</div>
+</div>
+</div>
+<!--                    <div>-->
+<!--                        <button class="register-btn" onclick="allClick()">-->
+<!--                            <img src="img/register.svg" alt=""/> Реєстрація-->
+<!--                        </button>-->
+<!--                    </div>-->
+</div>
+</div>
+</div>
+</div>
+<iframe allowfullscreen="" height="733" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2540.223062412827!2d30.5195749!3d50.4555708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40d4ce44dc6e253f%3A0xbe62b362eb81b4e0!2z0LLRg9C70LjRhtGPINCS0LXQu9C40LrQsCDQltC40YLQvtC80LjRgNGB0YzQutCwLCAy0JAsINCa0LjRl9CyLCAwMjAwMA!5e0!3m2!1suk!2sua!4v1668617662019!5m2!1suk!2sua" style="border:0;" width="100%"></iframe>
+</section>
+<footer>
+<div class="container">
+<div class="row">
+<div class="col-12">
+<div class="copyright-container">
+<p class="policy">Політика конфіденційності</p>
+<p class="copyright">12-й аптечний саміт 2022 © 2022</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+</body>
+<script>
+    new Vue({
+        components: {
+            webconf: webconf,
+        },
+        data: {
+            disabled: {},
+        },
+        provide: {
+            disabled: 'disabled',
+        },
+    }).$mount('#app');
+
+</script>
+<script>
+    function allClick() {
+        var btn = document.querySelector('.request-form .btn.register');
+        btn.click();
+    }
+</script>
+<script src="js/burger.js"></script>
+<script src="js/timers-ru.js"></script>
+</html>
