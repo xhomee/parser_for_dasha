@@ -13,8 +13,12 @@
 # #elem.send_keys(Keys.RETURN)
 # assert "No results found." not in driver.page_source
 # driver.close()
+
+
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+import urllib3
 
 driver = webdriver.Chrome()
 driver.get("https://ukrcomexpo.com/pharmacy_summit_Ukraine-2022/?token=34997651c3959fefa205e27b47315434e2ef04bf")
